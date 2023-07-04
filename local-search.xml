@@ -4,23 +4,276 @@
   
   
   <entry>
-    <title>Hello World</title>
-    <link href="/2023/07/04/hello-world/"/>
-    <url>/2023/07/04/hello-world/</url>
+    <title>mysql、gorm笔记</title>
+    <link href="/2023/07/04/mysql%E3%80%81gorm%E7%AC%94%E8%AE%B0/"/>
+    <url>/2023/07/04/mysql%E3%80%81gorm%E7%AC%94%E8%AE%B0/</url>
     
-    <content type="html"><![CDATA[<h2 id="博客的搭建"><a href="#博客的搭建" class="headerlink" title="博客的搭建"></a>博客的搭建</h2><p>搭建博客网站使用的是hexo</p><h3 id="创建一个新文章"><a href="#创建一个新文章" class="headerlink" title="创建一个新文章"></a>创建一个新文章</h3><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs sh">$ hexo new <span class="hljs-string">&quot;My New Postname&quot;</span> 或 $ hexo n <span class="hljs-string">&quot;My New Postname&quot;</span><br></code></pre></td></tr></table></figure><p>More info: <a href="https://hexo.io/docs/writing.html">Writing</a></p><h3 id="运行服务"><a href="#运行服务" class="headerlink" title="运行服务"></a>运行服务</h3><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs sh">$ hexo server 或 $ hexo s<br></code></pre></td></tr></table></figure><p>More info: <a href="https://hexo.io/docs/server.html">Server</a></p><h3 id="生成静态文件"><a href="#生成静态文件" class="headerlink" title="生成静态文件"></a>生成静态文件</h3><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs sh">$ hexo generate 或 $ hexo g<br></code></pre></td></tr></table></figure><p>More info: <a href="https://hexo.io/docs/generating.html">Generating</a></p><h3 id="部署到远程站点"><a href="#部署到远程站点" class="headerlink" title="部署到远程站点"></a>部署到远程站点</h3><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs sh">$ hexo deploy 或 $ hexo d<br></code></pre></td></tr></table></figure><p>More info: <a href="https://hexo.io/docs/one-command-deployment.html">Deployment</a></p><h3 id="清除缓存"><a href="#清除缓存" class="headerlink" title="清除缓存"></a>清除缓存</h3><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs sh">$ hexo clean 或 $ hexo c<br></code></pre></td></tr></table></figure>]]></content>
+    <content type="html"><![CDATA[<h3 id="mysql基本操作"><a href="#mysql基本操作" class="headerlink" title="mysql基本操作"></a>mysql基本操作</h3><h4 id="创建表"><a href="#创建表" class="headerlink" title="创建表"></a>创建表</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><code class="hljs mysql">create table user (<br>id int not null auto_increment comment &#x27;主键&#x27;,<br>name varchar(10) not null default &#x27;&#x27; comment &#x27;姓名&#x27;,<br>password varchar(50) not null default &#x27;123&#x27; comment &#x27;密码，默认值为123&#x27;,<br>gender char(3) default &#x27;0&#x27; check (gender in(&#x27;0&#x27;,&#x27;1&#x27;,&#x27;2&#x27;)) comment &#x27;性别，0:未知 1:男 2:女&#x27;,<br>phone varchar(11) default &#x27;&#x27; comment &#x27;11位手机号码&#x27;,<br>email varchar(128) default &#x27;&#x27; comment &#x27;邮箱&#x27;,<br>identity varchar(128) default &#x27;&#x27; comment &#x27;身份证号&#x27;,<br>client_ip varchar(128) default &#x27;&#x27; comment &#x27;连接ip地址&#x27;,<br>client_post varchar(128) default &#x27;&#x27; comment &#x27;连接端口号&#x27;,<br>login_time datetime(3) default now(3) comment &#x27;登陆时间&#x27;,<br>logout_time datetime(3) default now(3) comment &#x27;下线时间&#x27;,<br>is_login tinyint(1) default 0 comment &#x27;在线状态，0:离线 1:在线&#x27;,<br>heartbeat_time varchar(128) default &#x27;&#x27; comment &#x27;心跳速率&#x27;,<br>device_info varchar(128) default &#x27;&#x27; comment &#x27;设备信息&#x27;,<br>created_at datetime(3) default null comment &#x27;创建时间&#x27;,<br>updated_at datetime(3) default null comment &#x27;更新时间&#x27;,<br>deleted_at datetime(3) default null comment &#x27;删除时间&#x27;,<br>primary key (id)<br>)engine=InnoDB default charset=utf8;<br></code></pre></td></tr></table></figure><h4 id="删除表"><a href="#删除表" class="headerlink" title="删除表"></a>删除表</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs mysql">drop table table_name;<br></code></pre></td></tr></table></figure><h4 id="删除数据库"><a href="#删除数据库" class="headerlink" title="删除数据库"></a>删除数据库</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs mysql">drop database db_name;<br></code></pre></td></tr></table></figure><h4 id="mysqldump"><a href="#mysqldump" class="headerlink" title="mysqldump"></a>mysqldump</h4><h3 id="修改表信息"><a href="#修改表信息" class="headerlink" title="修改表信息"></a>修改表信息</h3><h4 id="修改表名"><a href="#修改表名" class="headerlink" title="修改表名"></a>修改表名</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs mysql">alter table table_oldname rename to table_newname;<br>eg: alter table user rename to user_info;<br></code></pre></td></tr></table></figure><h4 id="修改字段名"><a href="#修改字段名" class="headerlink" title="修改字段名"></a>修改字段名</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs mysql">alter table table_name change field_oldname field_newname type;<br>eg: alter table user change is_login is_logout tinyint(1);<br></code></pre></td></tr></table></figure><h4 id="修改字段属性"><a href="#修改字段属性" class="headerlink" title="修改字段属性"></a>修改字段属性</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs mysql">alter table table_name modify column fieldname type not null default &#x27;&#x27; comment &#x27;字段信息&#x27;;<br>eg: alter table user modify column name varchar(128) not null default &#x27;&#x27; comment &#x27;姓名&#x27;;<br></code></pre></td></tr></table></figure><h4 id="显示表全部信息"><a href="#显示表全部信息" class="headerlink" title="显示表全部信息"></a>显示表全部信息</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs mysql">show create table table_name;<br></code></pre></td></tr></table></figure><h4 id="设置性别约束"><a href="#设置性别约束" class="headerlink" title="设置性别约束"></a>设置性别约束</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs mysql">create table user(<br>...<br>gender char(3) default &#x27;0&#x27; check (gender in(&#x27;0&#x27;,&#x27;1&#x27;,&#x27;2&#x27;)) comment &#x27;性别，0:未知 1:男 2:女&#x27;,<br>...<br>);<br></code></pre></td></tr></table></figure><h3 id="gorm"><a href="#gorm" class="headerlink" title="gorm"></a>gorm</h3><h4 id="gorm映射mysql数据表"><a href="#gorm映射mysql数据表" class="headerlink" title="gorm映射mysql数据表"></a>gorm映射mysql数据表</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs mysql">type TableName struct&#123;<br>    ID            int       `json:&quot;id&quot; gorm:&quot;column:id;primaryKey;autoIncrement;comment:自增主键id&quot;`<br>    Name          string    `json:&quot;name&quot; gorm:&quot;column:name;comment:用户姓名&quot;`<br>&#125;<br></code></pre></td></tr></table></figure><blockquote><p>go在使用结构体映射mysql数据表时：column来对应mysql表中中的字段名，primaryKey对应主键，&gt; autoIncrement对应自增属性，comment对应字段注释，index对应索引。</p></blockquote><blockquote><p>还有size、not null、default等属性也可以一一对应</p></blockquote><blockquote><p>eg: gorm:”column:id;size:4;primaryKey;autoIncrement;not null;default:0;comment:自增主键id;index:index_name”</p></blockquote>]]></content>
     
     
     <categories>
       
-      <category>博客</category>
+      <category>数据库</category>
       
     </categories>
     
     
     <tags>
       
-      <tag>hexo</tag>
+      <tag>Go</tag>
+      
+      <tag>数据库</tag>
+      
+      <tag>mysql</tag>
+      
+      <tag>gorm</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
+    <title>git常用命令</title>
+    <link href="/2023/07/04/git%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4/"/>
+    <url>/2023/07/04/git%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4/</url>
+    
+    <content type="html"><![CDATA[<h3 id="git-tag"><a href="#git-tag" class="headerlink" title="git tag"></a>git tag</h3><p><strong>轻量标签</strong></p><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs git">git tag v1.0.0<br></code></pre></td></tr></table></figure><p><strong>附注标签（为附注标签指定一条信息）</strong></p><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs git">git tag -a v1.0.0 -m &#x27;version 1.0.0&#x27;<br></code></pre></td></tr></table></figure><p><strong>后期打标签</strong></p><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs git">获取历史提交记录：<br>git log --pretty=oneline<br>补上标签：<br>git tag -a v1.0.0 9fceb02(校验和)<br></code></pre></td></tr></table></figure><p><strong>列出标签</strong></p><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs git">git tag<br>git tag -l<br>git tag --list<br></code></pre></td></tr></table></figure><p><strong>推送标签到github</strong></p><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs git">git push origin tagname--推送单个标签<br>git push origin --tags--推送多个标签<br></code></pre></td></tr></table></figure><p><strong>删除标签</strong></p><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs git">git tag -d v1.0.0    --删除本地标签<br>git push origin --delete v1.0.0    --删除远程标签<br>git push &lt;remote&gt; :refs/tags/&lt;tagname&gt;    --删除远程标签<br></code></pre></td></tr></table></figure><p><strong>检出标签</strong></p><figure class="highlight apache"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs apache"><span class="hljs-attribute">git</span> checkout v1.<span class="hljs-number">0</span>.<span class="hljs-number">0</span><br></code></pre></td></tr></table></figure><h3 id="忽略某些不想提交的文件"><a href="#忽略某些不想提交的文件" class="headerlink" title="忽略某些不想提交的文件"></a>忽略某些不想提交的文件</h3><p><strong>在项目目录下创建.gitignore文件</strong></p><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs sh">vim .gitignore<br></code></pre></td></tr></table></figure><p><strong>添加忽略的文件名或后缀</strong></p><figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs text">.idea<br>.gitignore<br>*.iml<br></code></pre></td></tr></table></figure><p><strong>忽略文件已上传解决办法</strong></p><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><code class="hljs git"># 删除缓存<br>git rm -r --cache .<br><br># 查看状态<br>git status<br><br># 将更改提交到本地暂存区 <br>git add .<br><br># 提交本地库<br>git commit -m &#x27;忽略 .idea .gitignore *.iml&#x27;<br><br># 上传服务器<br>git push origin main<br></code></pre></td></tr></table></figure><h3 id="撤销commit"><a href="#撤销commit" class="headerlink" title="撤销commit"></a>撤销commit</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs git"># 撤销commit<br>git reset --soft HEAD^<br><br># 修改commit注释<br>git commit --amend<br></code></pre></td></tr></table></figure><h2 id="参数"><a href="#参数" class="headerlink" title="参数"></a>参数</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><code class="hljs git"># --mixed<br>不删除工作空间改动代码，撤销commit，并且撤销git add . 操作<br>这个为默认参数,git reset --mixed HEAD^ 和 git reset HEAD^ 效果是一样的<br><br># --soft<br>不删除工作空间改动代码，撤销commit，不撤销git add . <br><br># --hard<br>删除工作空间改动代码，撤销commit，撤销git add . <br>注意完成这个操作后，就恢复到了上一次的commit状态<br><br># HEAD^<br>HEAD^的意思是上一个版本，也可以写成HEAD~1<br>如果进行了2次commit，想都撤回，可以使用HEAD~2<br></code></pre></td></tr></table></figure><h3 id="恢复到指定版本"><a href="#恢复到指定版本" class="headerlink" title="恢复到指定版本"></a>恢复到指定版本</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs git"># 查看提交日志<br>git log<br><br># 恢复到指定版本<br>git reset --hard 版本号<br></code></pre></td></tr></table></figure><p>撤销远程仓库的commit</p><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><code class="hljs git"># 查看历史commit版本号<br>git log<br><br># 恢复到想要恢复的版本号<br>git reset --hard 版本号<br><br># 提交到远程仓库<br>git push origin branch_name --force<br></code></pre></td></tr></table></figure><h3 id="分支操作"><a href="#分支操作" class="headerlink" title="分支操作"></a>分支操作</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><code class="hljs git"># 本地创建分支 推送到远程仓库<br>git push --set-upstream origin branch_name<br><br># 远程创建分支 连接到本地分支<br>git fetch<br>git checkout -b branch_name origin/branch_name<br><br># 查看本地分支与远程分支连接情况<br>git branch -vv<br><br># 删除分支<br>git branch -b branch_name<br><br># 查看远程分支<br>git branch -r<br><br># 查看所有分支（远程+本地）<br>git branch -a<br></code></pre></td></tr></table></figure><h3 id="本地仓库连接远程仓库"><a href="#本地仓库连接远程仓库" class="headerlink" title="本地仓库连接远程仓库"></a>本地仓库连接远程仓库</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><code class="hljs git">给目标文件夹连接到目标仓库<br>git remote add origin + ssh/https <br><br># 查看连接情况<br>git remote -v 查看连接情况<br><br># 移除已存在的远程仓库连接<br>git remote rm origin<br></code></pre></td></tr></table></figure>]]></content>
+    
+    
+    <categories>
+      
+      <category>命令语句</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>git</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
+    <title>go读写csv文件</title>
+    <link href="/2023/07/04/go%E8%AF%BB%E5%86%99csv%E6%96%87%E4%BB%B6/"/>
+    <url>/2023/07/04/go%E8%AF%BB%E5%86%99csv%E6%96%87%E4%BB%B6/</url>
+    
+    <content type="html"><![CDATA[<h3 id="使用依赖库"><a href="#使用依赖库" class="headerlink" title="使用依赖库"></a>使用依赖库</h3><figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs go"><span class="hljs-keyword">import</span>(<br>  <span class="hljs-string">&quot;encoding/csv&quot;</span><br>)<br></code></pre></td></tr></table></figure><h3 id="读取"><a href="#读取" class="headerlink" title="读取"></a>读取</h3><p><strong>打开一个csv文件并声明一个csv.Reader对象</strong></p><figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs go">file, err := os.Open(<span class="hljs-string">&quot;foo.csv&quot;</span>)<br><span class="hljs-keyword">if</span> err != <span class="hljs-literal">nil</span> &#123;<br>fmt.Println(err)<br>&#125;<br><span class="hljs-keyword">defer</span> file.Close()<br>reader := csv.NewReader(file)<br></code></pre></td></tr></table></figure><p><strong>使用 <code>csv.Reader.Read</code> 来读取一行数据</strong></p><figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs go">row, err := reader.Read()<br><span class="hljs-keyword">if</span> err != <span class="hljs-literal">nil</span> &#123;<br>fmt.Println(err)<br>&#125;<br>fmt.Println(row)<br></code></pre></td></tr></table></figure><p><strong>使用 <code>csv.Reader.ReadAll</code> 读取所有行</strong></p><figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs go">rows, err := reader.ReadAll()<br><span class="hljs-keyword">if</span> err != <span class="hljs-literal">nil</span> &#123;<br>fmt.Println(err)<br>&#125;<br><span class="hljs-keyword">for</span> _, v := <span class="hljs-keyword">range</span> rows &#123;<br>fmt.Println(v)<br>&#125;<br></code></pre></td></tr></table></figure><h3 id="写入"><a href="#写入" class="headerlink" title="写入"></a>写入</h3><p><strong>创建一个csv文件并声明一个 <code>csv.NewWriter</code> 对象</strong></p><figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs go">file, err := os.Create(<span class="hljs-string">&quot;test.csv&quot;</span>)<br><span class="hljs-keyword">if</span> err != <span class="hljs-literal">nil</span> &#123;<br>fmt.Println(err)<br>&#125;<br><span class="hljs-keyword">defer</span> file.Close()<br>writer := csv.NewWriter(file)<br></code></pre></td></tr></table></figure><p><strong>控制csv文件中的字段分隔符</strong></p><figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs go">write.Comma = <span class="hljs-string">&#x27;,&#x27;</span><br></code></pre></td></tr></table></figure><p><strong>使用 <code>csv.Writer.Write</code> 来写入一行数据</strong></p><figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs go">err = write.Write([]<span class="hljs-type">string</span>&#123;<span class="hljs-string">&quot;1&quot;</span>, <span class="hljs-string">&quot;nihao&quot;</span>, <span class="hljs-string">&quot;ok~&quot;</span>&#125;)<br><span class="hljs-keyword">if</span> err != <span class="hljs-literal">nil</span> &#123;<br>fmt.Println(err)<br>&#125;<br></code></pre></td></tr></table></figure><p><strong>调用 <code>csv.Writer.Flush</code> 才能完成将数据写入文件中</strong></p><figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs go">write.Flush()<br></code></pre></td></tr></table></figure><p><strong>使用 <code>csv.Writer.WriteAll</code> 来进行多行写入</strong></p><figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><code class="hljs go">err = write.WriteAll([][]<span class="hljs-type">string</span>&#123;<br>&#123;<span class="hljs-string">&quot;1&quot;</span>, <span class="hljs-string">&quot;line1&quot;</span>, <span class="hljs-string">&quot;ok~&quot;</span>&#125;,<br>&#123;<span class="hljs-string">&quot;2&quot;</span>, <span class="hljs-string">&quot;line2&quot;</span>, <span class="hljs-string">&quot;ok~&quot;</span>&#125;,<br>&#123;<span class="hljs-string">&quot;3&quot;</span>, <span class="hljs-string">&quot;line3&quot;</span>, <span class="hljs-string">&quot;ok~&quot;</span>&#125;,<br>&#125;)<br><span class="hljs-keyword">if</span> err != <span class="hljs-literal">nil</span> &#123;<br>fmt.Println(err)<br>&#125;<br>write.Flush()<br></code></pre></td></tr></table></figure>]]></content>
+    
+    
+    <categories>
+      
+      <category>Go语言</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>后端</tag>
+      
+      <tag>Go</tag>
+      
+      <tag>文件读写</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
+    <title>Linux系统中常用的终端命令</title>
+    <link href="/2023/07/04/Linux%E7%B3%BB%E7%BB%9F%E4%B8%AD%E5%B8%B8%E7%94%A8%E7%9A%84%E7%BB%88%E7%AB%AF%E5%91%BD%E4%BB%A4/"/>
+    <url>/2023/07/04/Linux%E7%B3%BB%E7%BB%9F%E4%B8%AD%E5%B8%B8%E7%94%A8%E7%9A%84%E7%BB%88%E7%AB%AF%E5%91%BD%E4%BB%A4/</url>
+    
+    <content type="html"><![CDATA[<h3 id="删除：rm"><a href="#删除：rm" class="headerlink" title="删除：rm"></a>删除：rm</h3><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs sh"><span class="hljs-built_in">rm</span> -rf abc/def.log<br><span class="hljs-built_in">rm</span> -f abc/def.log<br>删除多个文件:<br><span class="hljs-built_in">rm</span> -rf abc/a.txt abc/b.txt<br></code></pre></td></tr></table></figure><ul><li>-i 删除前逐一询问确认。</li><li>-f 即使原档案属性设为唯读，亦直接删除，无需逐一确认。</li><li>-r 将目录及以下之档案亦逐一删除。</li></ul><h3 id="复制：cp"><a href="#复制：cp" class="headerlink" title="复制：cp"></a>复制：cp</h3><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs sh">将当前目录<span class="hljs-built_in">test</span>/下的所有文件复制到新目录newtest下:<br><span class="hljs-built_in">cp</span> -r <span class="hljs-built_in">test</span>/ newtest<br></code></pre></td></tr></table></figure><ul><li>-a：此选项通常在复制目录时使用，它保留链接、文件属性，并复制目录下的所有内容。其作用等于dpR参数组合。</li><li>-d：复制时保留链接。这里所说的链接相当于 Windows 系统中的快捷方式。</li><li>-f：覆盖已经存在的目标文件而不给出提示。</li><li>-i：与 -f 选项相反，在覆盖目标文件之前给出提示，要求用户确认是否覆盖，回答 y 时目标文件将被覆盖。</li><li>-p：除复制文件的内容外，还把修改时间和访问权限也复制到新文件中。</li><li>-r：若给出的源文件是一个目录文件，此时将复制该目录下所有的子目录和文件。</li><li>-l：不复制文件，只是生成链接文件。</li></ul><div class="note note-danger">            <p>用户使用该指令复制目录时，必须使用参数 -r 或者 -R 。</p>          </div><h3 id="重命名与移动：mv"><a href="#重命名与移动：mv" class="headerlink" title="重命名与移动：mv"></a>重命名与移动：mv</h3><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs sh">将原文件名改为新文件名:<br><span class="hljs-built_in">mv</span> old_name(文件) new_name(文件)<br>将file_name文件移动到directory目录中:<br><span class="hljs-built_in">mv</span> file_name(文件) directory(目录)<br>若new_directory目录不存在，将old_directory重命名为new_directory;若new_directory目录已存在，将old_directory移动到new_directory目录下:<br><span class="hljs-built_in">mv</span> old_directory(目录) new_directory(目录)<br></code></pre></td></tr></table></figure><ul><li>-b: 当目标文件或目录存在时，在执行覆盖前，会为其创建一个备份。</li><li>-i: 如果指定移动的源目录或文件与目标的目录或文件同名，则会先询问是否覆盖旧文件，输入 y 表示直接覆盖，输入 n 表示取消该操作。</li><li>-f: 如果指定移动的源目录或文件与目标的目录或文件同名，不会询问，直接覆盖旧文件。</li><li>-n: 不要覆盖任何已存在的文件或目录。</li><li>-u：当源文件比目标文件新或者目标文件不存在时，才执行移动操作。</li></ul><h3 id="服务器与本地计算机之间互相传送文件：scp"><a href="#服务器与本地计算机之间互相传送文件：scp" class="headerlink" title="服务器与本地计算机之间互相传送文件：scp"></a>服务器与本地计算机之间互相传送文件：scp</h3><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs sh">远程服务器-&gt;本地:<br>scp ubuntu@xx.xxx.xxx.xx:/home/ubuntu/a.log /home/space<br>本地-&gt;远程服务器:<br>scp /home/space/a.txt ubuntu@xx.xxx.xxx.xx:/home/ubuntu/space<br></code></pre></td></tr></table></figure><h3 id="新建文件、文件夹"><a href="#新建文件、文件夹" class="headerlink" title="新建文件、文件夹"></a>新建文件、文件夹</h3><p><strong>touch、mkdir</strong></p><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs sh"><span class="hljs-built_in">touch</span> file.txt    --新建.txt文件<br><span class="hljs-built_in">mkdir</span> file    --新建文件夹<br></code></pre></td></tr></table></figure><p><strong>重定向操作符创建文件</strong></p><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs sh">&gt; file.txt    --文件不存在则创建，存在则覆盖<br>&gt;&gt; file.txt    --文件不存在则创建，存在则添加到已存在的文件中<br></code></pre></td></tr></table></figure>]]></content>
+    
+    
+    <categories>
+      
+      <category>命令语句</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>Linux</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
+    <title>docker学习、使用笔记</title>
+    <link href="/2023/07/04/docker%E5%AD%A6%E4%B9%A0%E3%80%81%E4%BD%BF%E7%94%A8%E7%AC%94%E8%AE%B0/"/>
+    <url>/2023/07/04/docker%E5%AD%A6%E4%B9%A0%E3%80%81%E4%BD%BF%E7%94%A8%E7%AC%94%E8%AE%B0/</url>
+    
+    <content type="html"><![CDATA[<p>参考网站：</p><p><a href="https://zhuanlan.zhihu.com/p/576172727">docker从入门到实战-万字长文全面介绍docker入门及高阶用法</a></p><p><a href="https://zhuanlan.zhihu.com/p/26418829">使用docker部署一个Web应用</a></p>]]></content>
+    
+    
+    <categories>
+      
+      <category>Docker</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>Docker</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
+    <title>Linux查看进程</title>
+    <link href="/2023/07/04/Linux%E6%9F%A5%E7%9C%8B%E8%BF%9B%E7%A8%8B/"/>
+    <url>/2023/07/04/Linux%E6%9F%A5%E7%9C%8B%E8%BF%9B%E7%A8%8B/</url>
+    
+    <content type="html"><![CDATA[<h2 id="Linux查看进程命令"><a href="#Linux查看进程命令" class="headerlink" title="Linux查看进程命令"></a>Linux查看进程命令</h2><p>查看端口号占用情况</p><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs sh">lsof -i :port<br></code></pre></td></tr></table></figure><p>杀死正在占用的端口</p><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs sh"><span class="hljs-built_in">kill</span> -9 port<br></code></pre></td></tr></table></figure>]]></content>
+    
+    
+    <categories>
+      
+      <category>命令语句</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>Linux</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
+    <title>Tmux工具</title>
+    <link href="/2023/07/04/Tmux%E5%B7%A5%E5%85%B7/"/>
+    <url>/2023/07/04/Tmux%E5%B7%A5%E5%85%B7/</url>
+    
+    <content type="html"><![CDATA[<h2 id="Tmux工具的学习使用"><a href="#Tmux工具的学习使用" class="headerlink" title="Tmux工具的学习使用"></a>Tmux工具的学习使用</h2><p>在服务器上测试demo的时候，需要后台挂起服务，方便查看项目运行情况，学习了一下tmux。</p><p>参考网站：<a href="https://zhuanlan.zhihu.com/p/102546608">知乎</a>、<a href="https://www.ruanyifeng.com/blog/2019/10/tmux.html">阮一峰的博客</a></p>]]></content>
+    
+    
+    <categories>
+      
+      <category>开发工具</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>Linux</tag>
+      
+      <tag>Tmux</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
+    <title>算法与数据数据结构C语言实现</title>
+    <link href="/2023/07/04/%E7%AE%97%E6%B3%95%E4%B8%8E%E6%95%B0%E6%8D%AE%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84C%E8%AF%AD%E8%A8%80%E5%AE%9E%E7%8E%B0/"/>
+    <url>/2023/07/04/%E7%AE%97%E6%B3%95%E4%B8%8E%E6%95%B0%E6%8D%AE%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84C%E8%AF%AD%E8%A8%80%E5%AE%9E%E7%8E%B0/</url>
+    
+    <content type="html"><![CDATA[]]></content>
+    
+    
+    <categories>
+      
+      <category>algo</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>C</tag>
+      
+      <tag>数据结构</tag>
+      
+      <tag>算法</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
+    <title>C语言基础学习笔记</title>
+    <link href="/2023/07/04/C%E8%AF%AD%E8%A8%80%E5%9F%BA%E7%A1%80%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/"/>
+    <url>/2023/07/04/C%E8%AF%AD%E8%A8%80%E5%9F%BA%E7%A1%80%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/</url>
+    
+    <content type="html"><![CDATA[<h2 id="从头捡起C语言"><a href="#从头捡起C语言" class="headerlink" title="从头捡起C语言"></a>从头捡起C语言</h2><p>开始刷算法，准备先过一遍数据结构与算法这门课程。发现大部分书籍都是用C语言实现的，而Go语言的书很少有，找到的一些电子书也不够完善，所以重学一遍C语言，先学一遍数据结构与算法，再来系统的刷题。</p><h3 id="变量"><a href="#变量" class="headerlink" title="变量"></a>变量</h3><ul><li>全局变量保存在内存的全局存储区中，占用静态的存储单元</li><li>局部变量保存在栈中，只有在所在函数被调用时才动态地为变量分配存储单元</li></ul><h3 id="数组"><a href="#数组" class="headerlink" title="数组"></a>数组</h3><h3 id="static关键字的使用"><a href="#static关键字的使用" class="headerlink" title="static关键字的使用"></a>static关键字的使用</h3><ul><li>局部变量的修饰符<br>通常是在某个函数体内，只能在该函数内被调用。<br>这样定义的变量通常被称为局部静态变量，它的值不会因为函数调用的结束而被清除，当函数再次被调用时，它的值是上一次调用结束后的值。<br>局部静态变量存储在静态存储区。</li><li>全局变量的修饰符<br>在某一个文件中，不属于任何一个函数。<br>这样定义的变量通常被称为静态全局变量。</li><li>用于函数的修饰符<br>关键字 static 还可以用于修饰一个函数，这样的函数称之为静态函数。<br>定义一个静态函数就是在函数的返回类型前加上 static 关键字。<br>静态函数的作用域仅限于本文件，不能被其它文件调用。</li></ul><h3 id="枚举"><a href="#枚举" class="headerlink" title="枚举"></a>枚举</h3><p><strong>枚举是c语言的一种基本数据类型</strong></p><p>声明一个枚举类型：</p><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs c"><span class="hljs-class"><span class="hljs-keyword">enum</span> 枚举名&#123;</span>枚举元素<span class="hljs-number">1</span>,枚举元素<span class="hljs-number">2.</span>..&#125;;<br></code></pre></td></tr></table></figure><p>定义一个枚举变量：</p><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs c"><span class="hljs-comment">//先声明枚举类型再定义枚举变量</span><br><span class="hljs-class"><span class="hljs-keyword">enum</span> 枚举名&#123;</span>枚举元素<span class="hljs-number">1</span>,枚举元素<span class="hljs-number">2.</span>..&#125;;<br><span class="hljs-class"><span class="hljs-keyword">enum</span> 枚举名 枚举变量;</span><br><span class="hljs-class"><span class="hljs-keyword">enum</span> <span class="hljs-title">DAY</span> &#123;</span>MON=<span class="hljs-number">1</span>, TUE, WED, THU, FRI, SAT, SUN&#125;;<br><span class="hljs-class"><span class="hljs-keyword">enum</span> <span class="hljs-title">DAY</span> <span class="hljs-title">day</span>;</span><br><span class="hljs-comment">//省略枚举名称，直接定义枚举变量</span><br><span class="hljs-class"><span class="hljs-keyword">enum</span> &#123;</span>MON=<span class="hljs-number">1</span>, TUE, WED, THU, FRI, SAT, SUN&#125; day;<br></code></pre></td></tr></table></figure><div class="note note-info">            <p>C语言中，不连续的枚举类型无法遍历。</p>          </div><h3 id="指针"><a href="#指针" class="headerlink" title="指针"></a>指针</h3><p><strong>指针也就是内存地址</strong>，指针变量是用来存放内存地址的变量。</p><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><code class="hljs c"><span class="hljs-comment">//声明指针变量</span><br>type *p;<br><span class="hljs-comment">//指针变量赋值</span><br><span class="hljs-type">int</span> a = <span class="hljs-number">10</span>;<br><span class="hljs-type">int</span> *p;<br>p = &amp;a;<br>p -&gt; 一个十六进制内存地址<br>*p -&gt; p存储的十六进制内存地址所对应的值<br></code></pre></td></tr></table></figure><h4 id="C指针的算术运算"><a href="#C指针的算术运算" class="headerlink" title="C指针的算术运算"></a>C指针的算术运算</h4><p><strong>++、–、+、-</strong></p><ul><li><p>指针的每一次递增，它其实会指向下一个元素的存储单元。</p></li><li><p>指针的每一次递减，它都会指向前一个元素的存储单元。</p></li><li><p>指针在递增和递减时跳跃的字节数取决于指针所指向变量数据类型长度，比如 int 就是 4 个字节。</p></li></ul><h4 id="递增一个指针"><a href="#递增一个指针" class="headerlink" title="递增一个指针"></a>递增一个指针</h4><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><code class="hljs c"><span class="hljs-type">int</span> var[] = &#123;<span class="hljs-number">10</span>,<span class="hljs-number">20</span>,<span class="hljs-number">30</span>&#125;;<br><span class="hljs-type">int</span> *p;<br>p = var;<span class="hljs-comment">/* 指针中的数组地址 */</span><br><span class="hljs-keyword">for</span> (<span class="hljs-type">int</span> i=<span class="hljs-number">0</span>;i&lt;<span class="hljs-number">3</span>;i++)&#123;<br><span class="hljs-built_in">printf</span>(<span class="hljs-string">&quot;var[%d]=%p\n&quot;</span>,i,p);<br><span class="hljs-built_in">printf</span>(<span class="hljs-string">&quot;var[%d]=%d\n&quot;</span>,i,*p);<br><br>p++;<br>&#125;<br></code></pre></td></tr></table></figure><h4 id="递减一个指针"><a href="#递减一个指针" class="headerlink" title="递减一个指针"></a>递减一个指针</h4><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><code class="hljs c"><span class="hljs-type">int</span> var[] = &#123;<span class="hljs-number">10</span>,<span class="hljs-number">20</span>,<span class="hljs-number">30</span>&#125;;<br><span class="hljs-type">int</span> *p;<br>p = &amp;var[<span class="hljs-number">2</span>];<span class="hljs-comment">/* 指针中最后一个元素的地址 */</span><br><span class="hljs-keyword">for</span> (<span class="hljs-type">int</span> i=<span class="hljs-number">2</span>;i&gt;=<span class="hljs-number">0</span>;i--)&#123;<br>  <span class="hljs-built_in">printf</span>(<span class="hljs-string">&quot;var[%d]=%p\n&quot;</span>,i,p);<br>  <span class="hljs-built_in">printf</span>(<span class="hljs-string">&quot;var[%d]=%d\n&quot;</span>,i,*p);<br>  <br>  p--;<br>&#125;<br></code></pre></td></tr></table></figure><h4 id="指针的比较"><a href="#指针的比较" class="headerlink" title="指针的比较"></a>指针的比较</h4><p>指针可以使用关系运算符进行比较，例如<code>==</code>、<code>&lt;</code>和<code>&gt;</code>。</p><h4 id="指针数组"><a href="#指针数组" class="headerlink" title="指针数组"></a>指针数组</h4><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs c"><span class="hljs-comment">//声明一个指针数组</span><br>type *ptr[] = &#123;...&#125;;<br></code></pre></td></tr></table></figure><h3 id="字符串"><a href="#字符串" class="headerlink" title="字符串"></a>字符串</h3><p><strong>字符串实际上是使用空字符 \0 结尾的一维字符数组。因此，\0 是用于标记字符串的结束。</strong></p><p><strong>空字符（Null character）</strong>又称结束符，缩写 <strong>NUL</strong>，是一个数值为 <strong>0</strong> 的控制字符，<strong>\0</strong> 是转义字符，意思是告诉编译器，这不是字符 <strong>0</strong>，而是空字符。</p><p>下面的声明和初始化创建了一个 <strong>RUNOOB</strong> 字符串。由于在数组的末尾存储了空字符 <strong>\0</strong>，所以字符数组的大小比单词 <strong>RUNOOB</strong> 的字符数多一个。</p><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs c"><span class="hljs-type">char</span> site[<span class="hljs-number">7</span>] = &#123;<span class="hljs-string">&#x27;R&#x27;</span>, <span class="hljs-string">&#x27;U&#x27;</span>, <span class="hljs-string">&#x27;N&#x27;</span>, <span class="hljs-string">&#x27;O&#x27;</span>, <span class="hljs-string">&#x27;O&#x27;</span>, <span class="hljs-string">&#x27;B&#x27;</span>, <span class="hljs-string">&#x27;\0&#x27;</span>&#125;;<br></code></pre></td></tr></table></figure><p>依据数组初始化规则，您可以把上面的语句写成以下语句：</p><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs c"><span class="hljs-type">char</span> site[] = <span class="hljs-string">&quot;RUNOOB&quot;</span>;<br></code></pre></td></tr></table></figure><h4 id="操作字符串的函数"><a href="#操作字符串的函数" class="headerlink" title="操作字符串的函数"></a>操作字符串的函数</h4><div class="note note-info">            <p>strcpy(s1, s2);</p><p>复制字符串 s2 到字符串 s1</p>          </div><div class="note note-info">            <p>strcat(s1, s2);</p><p>连接字符串 s2 到字符串 s1 的末尾</p>          </div><div class="note note-info">            <p>strlen(s1);</p><p>返回字符串 s1 的长度</p>          </div><div class="note note-info">            <p>strcmp(s1,s2);</p><p>如果 s1 和 s2 是相同的，则返回 0；如果 s1&lt;s2 则返回小于 0；如果 s1&gt;s2 则返回大于 0。</p>          </div><div class="note note-info">            <p>strchr(s1,ch);</p><p>返回一个指针，指向字符串 s1 中字符 ch 的第一次出现的位置。(截取ch及后面的字符)</p>          </div><div class="note note-info">            <p>strstr(s1,s2);</p><p>返回一个指针，指向字符串 s1 中字符串 s2 的第一次出现的位置。</p>          </div><h3 id="结构体"><a href="#结构体" class="headerlink" title="结构体"></a>结构体</h3><p><strong>C 数组允许定义可存储相同类型数据项的变量，结构是 C 编程中另一种用户自定义的可用的数据类型，它允许您存储不同类型的数据项。</strong></p><h4 id="定义结构"><a href="#定义结构" class="headerlink" title="定义结构"></a>定义结构</h4><p>为了定义结构，您必须使用 <strong>struct</strong> 语句。<code>struct</code> 语句定义了一个包含多个成员的新的数据类型，<code>struct</code> 语句的格式如下：</p><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><code class="hljs c"><span class="hljs-class"><span class="hljs-keyword">struct</span> <span class="hljs-title">tag</span> &#123;</span> <br>    member-<span class="hljs-built_in">list</span><br>    member-<span class="hljs-built_in">list</span> <br>    member-<span class="hljs-built_in">list</span>  <br>    ...<br>&#125; variable-<span class="hljs-built_in">list</span> ;<br><span class="hljs-comment">//tag 是结构体标签。</span><br><span class="hljs-comment">//member-list 是标准的变量定义，比如 int i; 或者 float f，或者其他有效的变量定义。</span><br><span class="hljs-comment">//variable-list 结构变量，定义在结构的末尾，最后一个分号之前，您可以指定一个或多个结构变量。</span><br></code></pre></td></tr></table></figure><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs c"><span class="hljs-class"><span class="hljs-keyword">struct</span> <span class="hljs-title">Books</span>&#123;</span><br><span class="hljs-type">char</span> title[<span class="hljs-number">50</span>];<br><span class="hljs-type">char</span> author[<span class="hljs-number">50</span>];<br><span class="hljs-type">char</span> subject[<span class="hljs-number">100</span>];<br><span class="hljs-type">int</span> book_id;<br>&#125; book;<br></code></pre></td></tr></table></figure><h3 id="共用体"><a href="#共用体" class="headerlink" title="共用体"></a>共用体</h3><p><strong>共用体是一种特殊的数据类型，允许您在相同的内存位置存储不同的数据类型。您可以定义一个带有多成员的共用体，但是任何时候只能有一个成员带有值。共用体提供了一种使用相同的内存位置的有效方式。</strong></p><h4 id="定义共用体"><a href="#定义共用体" class="headerlink" title="定义共用体"></a>定义共用体</h4><p>为了定义共用体，您必须使用 <code>union</code> 语句，方式与定义结构类似。<code>union</code> 语句定义了一个新的数据类型，带有多个成员。<code>union</code> 语句的格式如下：</p><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs c"><span class="hljs-class"><span class="hljs-keyword">union</span> [<span class="hljs-title">union</span> <span class="hljs-title">tag</span>]</span><br><span class="hljs-class">&#123;</span><br>   member definition;<br>   member definition;<br>   ...<br>   member definition;<br>&#125; [one or more <span class="hljs-class"><span class="hljs-keyword">union</span> <span class="hljs-title">variables</span>];</span><br></code></pre></td></tr></table></figure><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs c"><span class="hljs-class"><span class="hljs-keyword">union</span> <span class="hljs-title">Data</span>&#123;</span><br><span class="hljs-type">int</span> i;<br><span class="hljs-type">float</span> f;<br><span class="hljs-type">char</span> str[<span class="hljs-number">20</span>];<br>&#125; data;<br></code></pre></td></tr></table></figure><p>访问共用体成员，使用成员运算符(.)</p><div class="note note-warning">            <p>在同一时间，只能使用一个类型的成员变量，否则会造成数据损坏。</p>          </div><h3 id="typedef"><a href="#typedef" class="headerlink" title="typedef"></a>typedef</h3><p>C 语言提供了 <code>typedef</code> 关键字，您可以使用它来为类型取一个新的名字。</p><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs c"><span class="hljs-keyword">typedef</span> <span class="hljs-type">unsigned</span> <span class="hljs-type">char</span> BYTE;<br></code></pre></td></tr></table></figure><p>在这个类型定义之后，标识符 <code>BYTE</code> 可作为类型 <code>unsigned char</code> 的缩写，例如：</p><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs c">BYTE b1,b2;<br></code></pre></td></tr></table></figure><p>（按照惯例，定义时会大写字母，以便提醒用户类型名称是一个象征性的缩写，但也可以使用小写字母。）</p><p>可以使用 <strong>typedef</strong> 来为用户自定义的数据类型取一个新的名字。例如，您可以对结构体使用 <code>typedef</code> 来定义一个新的数据类型名字，然后使用这个新的数据类型来直接定义结构变量。</p><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs c"><span class="hljs-keyword">typedef</span> <span class="hljs-class"><span class="hljs-keyword">struct</span> <span class="hljs-title">Books</span>&#123;</span><span class="hljs-comment">//typedef给结构体Books定义新数据类型名称Book</span><br><span class="hljs-type">char</span> title[<span class="hljs-number">50</span>];<br><span class="hljs-type">char</span> author[<span class="hljs-number">50</span>];<br><span class="hljs-type">char</span> subject[<span class="hljs-number">50</span>];<br><span class="hljs-type">int</span> book_id;<br>&#125;Book;<br>Book book;<span class="hljs-comment">//使用新数据类型名称Book定义变量book</span><br></code></pre></td></tr></table></figure><h4 id="typedef-与-define"><a href="#typedef-与-define" class="headerlink" title="typedef 与 #define"></a>typedef 与 #define</h4><p><strong>#define</strong> 是 C 指令，用于为各种数据类型定义别名，与 <strong>typedef</strong> 类似，但是它们有以下几点不同：</p><ul><li><p><code>typedef</code> 仅限于为类型定义符号名称，<code>#define</code> 不仅可以为类型定义别名，也能为数值定义别名，比如您可以定义 1 为 ONE。</p></li><li><p><code>typedef</code> 是由编译器执行解释的，<code>#define</code> 语句是由预编译器进行处理的。</p></li></ul>]]></content>
+    
+    
+    <categories>
+      
+      <category>C语言</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>后端</tag>
+      
+      <tag>C</tag>
+      
+      <tag>数据结构</tag>
+      
+      <tag>算法</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
+    <title>ubuntu搭建Jenkins环境自动发布Go项目</title>
+    <link href="/2023/07/04/ubuntu%E6%90%AD%E5%BB%BAJenkins%E7%8E%AF%E5%A2%83%E8%87%AA%E5%8A%A8%E5%8F%91%E5%B8%83Go%E9%A1%B9%E7%9B%AE/"/>
+    <url>/2023/07/04/ubuntu%E6%90%AD%E5%BB%BAJenkins%E7%8E%AF%E5%A2%83%E8%87%AA%E5%8A%A8%E5%8F%91%E5%B8%83Go%E9%A1%B9%E7%9B%AE/</url>
+    
+    <content type="html"><![CDATA[<h2 id="ubuntu搭建Jenkins环境"><a href="#ubuntu搭建Jenkins环境" class="headerlink" title="ubuntu搭建Jenkins环境"></a>ubuntu搭建Jenkins环境</h2><ul><li>安装Java</li></ul><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs sh">$ sudo apt update<br>$ sudo apt install openjdk-11-jdk<br>$ java -version<br>//自Jenkins 2.357 和 LTS 2.361.1 起，Jenkins 需要 Java 11 或 17<br></code></pre></td></tr></table></figure><div class="note note-success">            <p>文字 或者 <code>markdown</code> 均可</p>          </div>]]></content>
+    
+    
+    <categories>
+      
+      <category>环境搭建</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>Linux</tag>
+      
+      <tag>Go</tag>
+      
+      <tag>运维</tag>
+      
+      <tag>Jenkins</tag>
       
     </tags>
     
@@ -33,9 +286,48 @@
     <link href="/2023/07/04/hexo%E4%BD%BF%E7%94%A8Fluid%E4%B8%BB%E9%A2%98/"/>
     <url>/2023/07/04/hexo%E4%BD%BF%E7%94%A8Fluid%E4%B8%BB%E9%A2%98/</url>
     
-    <content type="html"><![CDATA[<h2 id="安装主题"><a href="#安装主题" class="headerlink" title="安装主题"></a>安装主题</h2><p>Fluid 是基于 Hexo 的一款 Material Design 风格的主题，由 Fluid-dev (opens new window)负责开发与维护。</p><p>主题 GitHub: <a href="https://github.com/fluid-dev/hexo-theme-fluid">https://github.com/fluid-dev/hexo-theme-fluid</a><br>预览网站: Fluid’s blog (opens new window)zkqiang’s blog</p>]]></content>
+    <content type="html"><![CDATA[<h2 id="安装主题"><a href="#安装主题" class="headerlink" title="安装主题"></a>安装主题</h2><p>Fluid 是基于 Hexo 的一款 Material Design 风格的主题，由 Fluid-dev (opens new window)负责开发与维护。</p><p>主题 GitHub: <a href="https://github.com/fluid-dev/hexo-theme-fluid">https://github.com/fluid-dev/hexo-theme-fluid</a><br>预览网站: Fluid’s blog (opens new window)zkqiang’s blog</p><h3 id="搭建hexo博客"><a href="#搭建hexo博客" class="headerlink" title="搭建hexo博客"></a>搭建hexo博客</h3><p>先安装hexo，搭建hexo博客网站</p><h3 id="获取主题"><a href="#获取主题" class="headerlink" title="获取主题"></a>获取主题</h3><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs sh">$ npm install --save hexo-theme-fluid<br></code></pre></td></tr></table></figure><h3 id="选择hexo主题"><a href="#选择hexo主题" class="headerlink" title="选择hexo主题"></a>选择hexo主题</h3><p>如下修改Hexo博客目录中的的_config.yml文件</p><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs sh">theme: fluid  <span class="hljs-comment">#指定主题</span><br></code></pre></td></tr></table></figure><h3 id="创建「关于页」"><a href="#创建「关于页」" class="headerlink" title="创建「关于页」"></a>创建「关于页」</h3><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs sh">$ hexo n page about<br></code></pre></td></tr></table></figure><p>然后修改&#x2F;source&#x2F;about&#x2F;index.md文件，添加layout属性</p><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs sh">---<br>title: 标题<br>layout: about<br>---<br><br><span class="hljs-comment"># 这里填写你想在about页展示的内容</span><br></code></pre></td></tr></table></figure><div class="note note-warning">            <p><code>layout: about</code> 必须存在，并且不能修改成其他值，否则不会显示头像等样式。</p>          </div><h3 id="about页操作"><a href="#about页操作" class="headerlink" title="about页操作"></a>about页操作</h3><p><strong>修改about页面下头像下的简介</strong></p><figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs text">在 _config.fluid.yaml 文件中<br>修改 about 下的 intro 字段<br></code></pre></td></tr></table></figure><p><strong>about页面添加自我介绍</strong></p><figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs text">source/about/index.md文件中<br>在&quot;---&quot;下面空白处填写自我介绍<br></code></pre></td></tr></table></figure><p><strong>更改标签栏的图标</strong></p><figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs text">修改 _config.fluid.yml 文件中的 favicon 字段<br></code></pre></td></tr></table></figure><h2 id="hexo-fluid个人使用笔记"><a href="#hexo-fluid个人使用笔记" class="headerlink" title="hexo fluid个人使用笔记"></a>hexo fluid个人使用笔记</h2><p>在Hexo+Fiuld主题搭建的个人博客使用过程中，根据用户手册，记录一些个人使用笔记。</p><h3 id="修改页面图片"><a href="#修改页面图片" class="headerlink" title="修改页面图片"></a>修改页面图片</h3><p>在_config.fluid.yml文件中，修改对应页面的banner_img，图片需要保存在&#x2F;source&#x2F;img文件夹下。</p><h3 id="文章在首页的封面图"><a href="#文章在首页的封面图" class="headerlink" title="文章在首页的封面图"></a>文章在首页的封面图</h3><p>对于单篇文章，在文章开头 <code>Front-matter</code> 中配置 <code>index_img</code> 属性。</p><figure class="highlight md"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><code class="hljs md">---<br>title: hexo使用Fluid主题<br>date: 2023-07-04 10:04:40<br>categories: blog<br>tags: [Hexo, Fluid]<br><span class="hljs-section">index<span class="hljs-emphasis">_img: /img/bg/class.jpg</span></span><br><span class="hljs-emphasis"><span class="hljs-section">---</span></span><br><span class="hljs-emphasis"><span class="hljs-section">以下是文章内容</span></span><br></code></pre></td></tr></table></figure><p>如果想统一给文章设置一个默认图片（文章不设置 <code>index_img</code> 则默认使用这张图片），可在 <code>_config_fluid.yml</code> 中设置：</p><figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs yaml"><span class="hljs-attr">post:</span><br>  <span class="hljs-attr">default_index_img:</span> <span class="hljs-string">/img/example.jpg</span><br></code></pre></td></tr></table></figure><p>当 default_index_img 和 index_img 都为空时，该文章在首页将不显示图片。</p><h3 id="关闭版权声明"><a href="#关闭版权声明" class="headerlink" title="关闭版权声明"></a>关闭版权声明</h3><p>轻度强迫症，感觉文章下面的版权声明看着十分难受，就关掉了</p><p><img src="/img/article/2-1.png"></p><div class="note note-info">            <p>在 <code>_config.fluid.yml</code> 文件中，<code>copyright</code> 的 <code>enable</code> 改为 <code>false</code></p>          </div><h3 id="关闭终端运行hexo命令时的效果"><a href="#关闭终端运行hexo命令时的效果" class="headerlink" title="关闭终端运行hexo命令时的效果"></a>关闭终端运行hexo命令时的效果</h3><p>关闭如下效果</p><p><img src="/img/article/2-2.png"></p><div class="note note-info">            <p>将博客目录文件夹的<br><code>node_modules/hexo-theme-fluid/scripts/events/lib/hello.js</code><br><code>themes/fluid/scripts/events/lib/hello.js</code><br>文件中的对应效果删除即可。</p>          </div><h3 id="Tag便签"><a href="#Tag便签" class="headerlink" title="Tag便签"></a>Tag便签</h3><p>在 <code>markdown</code> 中加入如下的代码来使用便签：</p><figure class="highlight md"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs md">&#123;% note success %&#125;<br>文字 或者 <span class="hljs-code">`markdown`</span> 均可<br>&#123;% endnote %&#125;<br></code></pre></td></tr></table></figure><p>或者使用 <code>HTML</code> 形式：</p><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs html"><span class="hljs-tag">&lt;<span class="hljs-name">p</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;note note-primary&quot;</span>&gt;</span>标签<span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span><br></code></pre></td></tr></table></figure><p><strong>可选便签：</strong></p><div class="note note-primary">            <p>primary</p>          </div><div class="note note-secondary">            <p>secondary</p>          </div><div class="note note-success">            <p>success</p>          </div><div class="note note-danger">            <p>danger</p>          </div><div class="note note-warning">            <p>warning</p>          </div><div class="note note-info">            <p>info</p>          </div><div class="note note-light">            <p>light</p>          </div><h3 id="行内标签"><a href="#行内标签" class="headerlink" title="行内标签"></a>行内标签</h3><figure class="highlight md"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs md">&#123;% label primary @text %&#125;<br></code></pre></td></tr></table></figure><p>或者使用 HTML 形式：</p><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs html"><span class="hljs-tag">&lt;<span class="hljs-name">span</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;label label-primary&quot;</span>&gt;</span>Label<span class="hljs-tag">&lt;/<span class="hljs-name">span</span>&gt;</span><br></code></pre></td></tr></table></figure><p><strong>可选Label</strong></p><span class="label label-primary">primary</span><span class="label label-default">default</span><span class="label label-info">info</span><span class="label label-success">success</span><span class="label label-warning">warning</span><span class="label label-danger">danger</span><h3 id="代码块"><a href="#代码块" class="headerlink" title="代码块"></a>代码块</h3><p><strong>关闭代码块行号</strong></p><p><code>_config.fluid.yaml</code> 文件中</p><figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs yaml"><span class="hljs-attr">line_number:</span> <span class="hljs-literal">false</span><br></code></pre></td></tr></table></figure>]]></content>
     
     
+    <categories>
+      
+      <category>blog</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>Hexo</tag>
+      
+      <tag>Fluid</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
+    <title>Hello World</title>
+    <link href="/2023/07/04/hello-world/"/>
+    <url>/2023/07/04/hello-world/</url>
+    
+    <content type="html"><![CDATA[<h2 id="博客的搭建"><a href="#博客的搭建" class="headerlink" title="博客的搭建"></a>博客的搭建</h2><p>搭建博客网站使用的是hexo</p><h3 id="创建一个新文章"><a href="#创建一个新文章" class="headerlink" title="创建一个新文章"></a>创建一个新文章</h3><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs sh">$ hexo new <span class="hljs-string">&quot;My New Postname&quot;</span> 或 $ hexo n <span class="hljs-string">&quot;My New Postname&quot;</span><br></code></pre></td></tr></table></figure><p>More info: <a href="https://hexo.io/docs/writing.html">Writing</a></p><h3 id="运行服务"><a href="#运行服务" class="headerlink" title="运行服务"></a>运行服务</h3><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs sh">$ hexo server 或 $ hexo s<br></code></pre></td></tr></table></figure><p>More info: <a href="https://hexo.io/docs/server.html">Server</a></p><h3 id="生成静态文件"><a href="#生成静态文件" class="headerlink" title="生成静态文件"></a>生成静态文件</h3><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs sh">$ hexo generate 或 $ hexo g<br></code></pre></td></tr></table></figure><p>More info: <a href="https://hexo.io/docs/generating.html">Generating</a></p><h3 id="部署到远程站点"><a href="#部署到远程站点" class="headerlink" title="部署到远程站点"></a>部署到远程站点</h3><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs sh">$ hexo deploy 或 $ hexo d<br></code></pre></td></tr></table></figure><p>More info: <a href="https://hexo.io/docs/one-command-deployment.html">Deployment</a></p><h3 id="清除缓存"><a href="#清除缓存" class="headerlink" title="清除缓存"></a>清除缓存</h3><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs sh">$ hexo clean 或 $ hexo c<br></code></pre></td></tr></table></figure>]]></content>
+    
+    
+    <categories>
+      
+      <category>blog</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>Hexo</tag>
+      
+    </tags>
     
   </entry>
   

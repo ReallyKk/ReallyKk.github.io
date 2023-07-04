@@ -16,22 +16,25 @@
   <meta name="author" content="John Doe">
   <meta name="keywords" content="">
   
-    <meta name="description" content="博客的搭建搭建博客网站使用的是hexo 创建一个新文章1$ hexo new &quot;My New Postname&quot; 或 $ hexo n &quot;My New Postname&quot; More info: Writing 运行服务1$ hexo server 或 $ hexo s More info: Server 生成静态文件1$ hexo generate 或 $">
+    <meta name="description" content="ubuntu搭建Jenkins环境 安装Java  1234$ sudo apt update$ sudo apt install openjdk-11-jdk$ java -version&#x2F;&#x2F;自Jenkins 2.357 和 LTS 2.361.1 起，Jenkins 需要 Java 11 或 17               文字 或者 markdown 均可">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Hello World">
-<meta property="og:url" content="http://example.com/2023/07/04/hello-world/index.html">
+<meta property="og:title" content="ubuntu搭建Jenkins环境自动发布Go项目">
+<meta property="og:url" content="http://example.com/2023/07/04/ubuntu%E6%90%AD%E5%BB%BAJenkins%E7%8E%AF%E5%A2%83%E8%87%AA%E5%8A%A8%E5%8F%91%E5%B8%83Go%E9%A1%B9%E7%9B%AE/index.html">
 <meta property="og:site_name" content="Hexo">
-<meta property="og:description" content="博客的搭建搭建博客网站使用的是hexo 创建一个新文章1$ hexo new &quot;My New Postname&quot; 或 $ hexo n &quot;My New Postname&quot; More info: Writing 运行服务1$ hexo server 或 $ hexo s More info: Server 生成静态文件1$ hexo generate 或 $">
+<meta property="og:description" content="ubuntu搭建Jenkins环境 安装Java  1234$ sudo apt update$ sudo apt install openjdk-11-jdk$ java -version&#x2F;&#x2F;自Jenkins 2.357 和 LTS 2.361.1 起，Jenkins 需要 Java 11 或 17               文字 或者 markdown 均可">
 <meta property="og:locale" content="zh_CN">
-<meta property="article:published_time" content="2023-07-04T02:04:00.000Z">
-<meta property="article:modified_time" content="2023-07-04T02:19:38.269Z">
+<meta property="article:published_time" content="2023-07-04T03:00:27.000Z">
+<meta property="article:modified_time" content="2023-07-04T04:04:25.856Z">
 <meta property="article:author" content="John Doe">
-<meta property="article:tag" content="Hexo">
+<meta property="article:tag" content="Linux">
+<meta property="article:tag" content="Go">
+<meta property="article:tag" content="运维">
+<meta property="article:tag" content="Jenkins">
 <meta name="twitter:card" content="summary_large_image">
   
   
   
-  <title>Hello World - Hexo</title>
+  <title>ubuntu搭建Jenkins环境自动发布Go项目 - Hexo</title>
 
   <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
 
@@ -197,7 +200,7 @@
       <div class="banner-text text-center fade-in-up">
         <div class="h2">
           
-            <span id="subtitle" data-typed-text="Hello World"></span>
+            <span id="subtitle" data-typed-text="ubuntu搭建Jenkins环境自动发布Go项目"></span>
           
         </div>
 
@@ -208,7 +211,7 @@
     
       <span class="post-meta">
         <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-        <time datetime="2023-07-04 10:04" pubdate>
+        <time datetime="2023-07-04 11:00" pubdate>
           2023年7月4日 上午
         </time>
       </span>
@@ -220,7 +223,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          259 字
+          143 字
         
       </span>
     
@@ -231,7 +234,7 @@
         
         
         
-          3 分钟
+          2 分钟
         
       </span>
     
@@ -268,21 +271,20 @@
       <div class="container nopadding-x-md" id="board-ctn">
         <div id="board">
           <article class="post-content mx-auto">
-            <h1 id="seo-header">Hello World</h1>
+            <h1 id="seo-header">ubuntu搭建Jenkins环境自动发布Go项目</h1>
             
             
               <div class="markdown-body">
                 
-                <h2 id="博客的搭建"><a href="#博客的搭建" class="headerlink" title="博客的搭建"></a>博客的搭建</h2><p>搭建博客网站使用的是hexo</p>
-<h3 id="创建一个新文章"><a href="#创建一个新文章" class="headerlink" title="创建一个新文章"></a>创建一个新文章</h3><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs sh">$ hexo new <span class="hljs-string">&quot;My New Postname&quot;</span> 或 $ hexo n <span class="hljs-string">&quot;My New Postname&quot;</span><br></code></pre></td></tr></table></figure>
-<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/writing.html">Writing</a></p>
-<h3 id="运行服务"><a href="#运行服务" class="headerlink" title="运行服务"></a>运行服务</h3><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs sh">$ hexo server 或 $ hexo s<br></code></pre></td></tr></table></figure>
-<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/server.html">Server</a></p>
-<h3 id="生成静态文件"><a href="#生成静态文件" class="headerlink" title="生成静态文件"></a>生成静态文件</h3><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs sh">$ hexo generate 或 $ hexo g<br></code></pre></td></tr></table></figure>
-<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/generating.html">Generating</a></p>
-<h3 id="部署到远程站点"><a href="#部署到远程站点" class="headerlink" title="部署到远程站点"></a>部署到远程站点</h3><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs sh">$ hexo deploy 或 $ hexo d<br></code></pre></td></tr></table></figure>
-<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/one-command-deployment.html">Deployment</a></p>
-<h3 id="清除缓存"><a href="#清除缓存" class="headerlink" title="清除缓存"></a>清除缓存</h3><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs sh">$ hexo clean 或 $ hexo c<br></code></pre></td></tr></table></figure>
+                <h2 id="ubuntu搭建Jenkins环境"><a href="#ubuntu搭建Jenkins环境" class="headerlink" title="ubuntu搭建Jenkins环境"></a>ubuntu搭建Jenkins环境</h2><ul>
+<li>安装Java</li>
+</ul>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs sh">$ sudo apt update<br>$ sudo apt install openjdk-11-jdk<br>$ java -version<br>//自Jenkins 2.357 和 LTS 2.361.1 起，Jenkins 需要 Java 11 或 17<br></code></pre></td></tr></table></figure>
+
+<div class="note note-success">
+            <p>文字 或者 <code>markdown</code> 均可</p>
+          </div>
+
                 
               </div>
             
@@ -300,7 +302,7 @@
     
       <span class="category-chain">
         
-  <a href="/categories/blog/" class="category-chain-item">blog</a>
+  <a href="/categories/%E7%8E%AF%E5%A2%83%E6%90%AD%E5%BB%BA/" class="category-chain-item">环境搭建</a>
   
   
 
@@ -315,7 +317,13 @@
     <div class="post-meta">
       <i class="iconfont icon-tags"></i>
       
-        <a href="/tags/Hexo/" class="print-no-link">#Hexo</a>
+        <a href="/tags/Linux/" class="print-no-link">#Linux</a>
+      
+        <a href="/tags/Go/" class="print-no-link">#Go</a>
+      
+        <a href="/tags/%E8%BF%90%E7%BB%B4/" class="print-no-link">#运维</a>
+      
+        <a href="/tags/Jenkins/" class="print-no-link">#Jenkins</a>
       
     </div>
   
@@ -329,15 +337,21 @@
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/2023/07/04/hexo%E4%BD%BF%E7%94%A8Fluid%E4%B8%BB%E9%A2%98/" title="hexo使用Fluid主题">
+                      <a href="/2023/07/04/C%E8%AF%AD%E8%A8%80%E5%9F%BA%E7%A1%80%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/" title="C语言基础学习笔记">
                         <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">hexo使用Fluid主题</span>
+                        <span class="hidden-mobile">C语言基础学习笔记</span>
                         <span class="visible-mobile">上一篇</span>
                       </a>
                     
                   </article>
                   <article class="post-next col-6">
                     
+                    
+                      <a href="/2023/07/04/hexo%E4%BD%BF%E7%94%A8Fluid%E4%B8%BB%E9%A2%98/" title="hexo使用Fluid主题">
+                        <span class="hidden-mobile">hexo使用Fluid主题</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
                     
                   </article>
                 </div>
