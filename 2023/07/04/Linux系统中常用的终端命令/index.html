@@ -24,7 +24,7 @@
 <meta property="og:description" content="删除：rm1234rm -rf abc&#x2F;def.logrm -f abc&#x2F;def.log删除多个文件:rm -rf abc&#x2F;a.txt abc&#x2F;b.txt   -i 删除前逐一询问确认。 -f 即使原档案属性设为唯读，亦直接删除，无需逐一确认。 -r 将目录及以下之档案亦逐一删除。  复制：cp12将当前目录test&#x2F;下的所有文件复制到新目录newtest下:cp -r test&#x2F; newtest">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2023-07-04T04:04:04.000Z">
-<meta property="article:modified_time" content="2023-07-04T04:17:18.548Z">
+<meta property="article:modified_time" content="2023-09-04T12:01:24.695Z">
 <meta property="article:author" content="John Doe">
 <meta property="article:tag" content="Linux">
 <meta name="twitter:card" content="summary_large_image">
@@ -283,7 +283,7 @@
 <h3 id="复制：cp"><a href="#复制：cp" class="headerlink" title="复制：cp"></a>复制：cp</h3><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs sh">将当前目录<span class="hljs-built_in">test</span>/下的所有文件复制到新目录newtest下:<br><span class="hljs-built_in">cp</span> -r <span class="hljs-built_in">test</span>/ newtest<br></code></pre></td></tr></table></figure>
 
 <ul>
-<li>-a：此选项通常在复制目录时使用，它保留链接、文件属性，并复制目录下的所有内容。其作用等于dpR参数组合。</li>
+<li>-a：此选项通常在复制目录时使用，它保留链接、文件属性，并复制目录下的所有内容。其作用等于 dpR 参数组合。</li>
 <li>-d：复制时保留链接。这里所说的链接相当于 Windows 系统中的快捷方式。</li>
 <li>-f：覆盖已经存在的目标文件而不给出提示。</li>
 <li>-i：与 -f 选项相反，在覆盖目标文件之前给出提示，要求用户确认是否覆盖，回答 y 时目标文件将被覆盖。</li>
@@ -311,6 +311,7 @@
 
 <p><strong>重定向操作符创建文件</strong></p>
 <figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs sh">&gt; file.txt    --文件不存在则创建，存在则覆盖<br>&gt;&gt; file.txt    --文件不存在则创建，存在则添加到已存在的文件中<br></code></pre></td></tr></table></figure>
+
                 
               </div>
             

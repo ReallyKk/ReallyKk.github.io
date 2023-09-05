@@ -16,15 +16,15 @@
   <meta name="author" content="John Doe">
   <meta name="keywords" content="">
   
-    <meta name="description" content="Go中常用的字符串处理方法strings.Split1234func strings.Split(s string, sep string) []string&#x2F;&#x2F; 将切片 s 拆分为所有由 sep 分隔的子字符串，并返回这些分隔符之间的子字符串切片。&#x2F;&#x2F; 如果 sep 为空，返回 UTF-8 字符数组。&#x2F;&#x2F; strings.Split(&quot;abc&quot;,&quot;&quot;) &#x3D;">
+    <meta name="description" content="Go 中常用的字符串处理方法strings.Split1234func strings.Split(s string, sep string) []string&#x2F;&#x2F; 将切片 s 拆分为所有由 sep 分隔的子字符串，并返回这些分隔符之间的子字符串切片。&#x2F;&#x2F; 如果 sep 为空，返回 UTF-8 字符数组。&#x2F;&#x2F; strings.Split(&quot;abc&quot;,&quot;&quot;)">
 <meta property="og:type" content="article">
 <meta property="og:title" content="字符串处理">
 <meta property="og:url" content="http://example.com/2023/07/10/%E5%AD%97%E7%AC%A6%E4%B8%B2%E5%A4%84%E7%90%86/index.html">
 <meta property="og:site_name" content="Hexo">
-<meta property="og:description" content="Go中常用的字符串处理方法strings.Split1234func strings.Split(s string, sep string) []string&#x2F;&#x2F; 将切片 s 拆分为所有由 sep 分隔的子字符串，并返回这些分隔符之间的子字符串切片。&#x2F;&#x2F; 如果 sep 为空，返回 UTF-8 字符数组。&#x2F;&#x2F; strings.Split(&quot;abc&quot;,&quot;&quot;) &#x3D;">
+<meta property="og:description" content="Go 中常用的字符串处理方法strings.Split1234func strings.Split(s string, sep string) []string&#x2F;&#x2F; 将切片 s 拆分为所有由 sep 分隔的子字符串，并返回这些分隔符之间的子字符串切片。&#x2F;&#x2F; 如果 sep 为空，返回 UTF-8 字符数组。&#x2F;&#x2F; strings.Split(&quot;abc&quot;,&quot;&quot;)">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2023-07-10T07:18:44.000Z">
-<meta property="article:modified_time" content="2023-07-10T07:25:04.494Z">
+<meta property="article:modified_time" content="2023-09-04T12:00:52.983Z">
 <meta property="article:author" content="John Doe">
 <meta property="article:tag" content="后端">
 <meta property="article:tag" content="Go">
@@ -274,7 +274,7 @@
             
               <div class="markdown-body">
                 
-                <h2 id="Go中常用的字符串处理方法"><a href="#Go中常用的字符串处理方法" class="headerlink" title="Go中常用的字符串处理方法"></a>Go中常用的字符串处理方法</h2><h3 id="strings-Split"><a href="#strings-Split" class="headerlink" title="strings.Split"></a>strings.Split</h3><figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs go"><span class="hljs-function"><span class="hljs-keyword">func</span> <span class="hljs-title">strings</span>.<span class="hljs-title">Split</span><span class="hljs-params">(s <span class="hljs-type">string</span>, sep <span class="hljs-type">string</span>)</span></span> []<span class="hljs-type">string</span><br><span class="hljs-comment">// 将切片 s 拆分为所有由 sep 分隔的子字符串，并返回这些分隔符之间的子字符串切片。</span><br><span class="hljs-comment">// 如果 sep 为空，返回 UTF-8 字符数组。</span><br><span class="hljs-comment">// strings.Split(&quot;abc&quot;,&quot;&quot;) =&gt; [a b c]</span><br></code></pre></td></tr></table></figure>
+                <h2 id="Go-中常用的字符串处理方法"><a href="#Go-中常用的字符串处理方法" class="headerlink" title="Go 中常用的字符串处理方法"></a>Go 中常用的字符串处理方法</h2><h3 id="strings-Split"><a href="#strings-Split" class="headerlink" title="strings.Split"></a>strings.Split</h3><figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs go"><span class="hljs-function"><span class="hljs-keyword">func</span> <span class="hljs-title">strings</span>.<span class="hljs-title">Split</span><span class="hljs-params">(s <span class="hljs-type">string</span>, sep <span class="hljs-type">string</span>)</span></span> []<span class="hljs-type">string</span><br><span class="hljs-comment">// 将切片 s 拆分为所有由 sep 分隔的子字符串，并返回这些分隔符之间的子字符串切片。</span><br><span class="hljs-comment">// 如果 sep 为空，返回 UTF-8 字符数组。</span><br><span class="hljs-comment">// strings.Split(&quot;abc&quot;,&quot;&quot;) =&gt; [a b c]</span><br></code></pre></td></tr></table></figure>
 
 <h3 id="strings-Fields"><a href="#strings-Fields" class="headerlink" title="strings.Fields"></a>strings.Fields</h3><figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs go"><span class="hljs-function"><span class="hljs-keyword">func</span> <span class="hljs-title">Fields</span><span class="hljs-params">(s <span class="hljs-type">string</span>)</span></span> []<span class="hljs-type">string</span><br><span class="hljs-comment">// 返回一个用一个或多个连续的空格分隔的字符串 s 的子字符串的数组（slice），返回的数组中不含有空格</span><br><span class="hljs-comment">// strings.Fields(&quot;  abc def  gh i  jk  &quot;) =&gt; [&quot;abc&quot;,&quot;def&quot;,&quot;gh&quot;,&quot;i&quot;,&quot;jk&quot;]</span><br></code></pre></td></tr></table></figure>
 
@@ -297,6 +297,7 @@
 <h3 id="strings-Join"><a href="#strings-Join" class="headerlink" title="strings.Join"></a>strings.Join</h3><figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs go"><span class="hljs-function"><span class="hljs-keyword">func</span> <span class="hljs-title">Join</span><span class="hljs-params">(elems []<span class="hljs-type">string</span>, sep <span class="hljs-type">string</span>)</span></span> <span class="hljs-type">string</span><br><span class="hljs-comment">// 使用分割字符 sep 将 string类型的 切片 elems 拼接成一个字符串</span><br></code></pre></td></tr></table></figure>
 
 <h3 id="strings-NewReader"><a href="#strings-NewReader" class="headerlink" title="strings.NewReader"></a>strings.NewReader</h3><figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs go"><span class="hljs-function"><span class="hljs-keyword">func</span> <span class="hljs-title">NewReader</span><span class="hljs-params">(s <span class="hljs-type">string</span>)</span></span> *strings.Reader<br><span class="hljs-comment">// 用于生成一个 Reader 并读取字符串中的内容，然后返回指向该 Reader 的指针</span><br><br><span class="hljs-comment">// Read() 从 []byte 中读取内容。</span><br><span class="hljs-comment">// ReadByte() 和 ReadRune() 从字符串中读取下一个 byte 或者 rune。</span><br></code></pre></td></tr></table></figure>
+
                 
               </div>
             
