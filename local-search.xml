@@ -4,11 +4,11 @@
   
   
   <entry>
-    <title>进制与位运算</title>
-    <link href="/2023/09/07/%E8%BF%9B%E5%88%B6%E4%B8%8E%E4%BD%8D%E8%BF%90%E7%AE%97/"/>
-    <url>/2023/09/07/%E8%BF%9B%E5%88%B6%E4%B8%8E%E4%BD%8D%E8%BF%90%E7%AE%97/</url>
+    <title>编程基础</title>
+    <link href="/2023/09/07/%E7%BC%96%E7%A8%8B%E5%9F%BA%E7%A1%80/"/>
+    <url>/2023/09/07/%E7%BC%96%E7%A8%8B%E5%9F%BA%E7%A1%80/</url>
     
-    <content type="html"><![CDATA[<h3 id="位运算"><a href="#位运算" class="headerlink" title="位运算"></a>位运算</h3><p>按位或 | ：两个二进制数，两个对应位的值至少有一个为 1，则结果为 1，否则为 0。<br>按位异或 ^ ：两个二进制数，两个对应位的值不同，则结果为 1，否则为 0。<br>按位取反 ~：对二进制数的每个位上的值取反。<br>按位与 &amp;：两个二进制数，两个对应位的值都为 1，则结果为 1，否则为 0。<br>左移位 &lt;&lt;：将一个数 n 向左移动 m 位，新的位置由 0 填充，向左移动一个位置，相当于 <code>n * (2 ** 1)</code>，向左移动两个位置，相当于 <code>n * (2 ** 2)</code>。<br>右移位 &gt;&gt;：将一个数 n 向右移动 m 位，新的位置由 0 填充，向右移动一个位置，相当于 <code>n / (2 ** 1)</code>，向右移动两个位置，相当于 <code>n / (2 ** 2)</code>。</p>]]></content>
+    <content type="html"><![CDATA[<h3 id="位运算符"><a href="#位运算符" class="headerlink" title="位运算符"></a>位运算符</h3><p>按位或 | ：两个二进制数，两个对应位的值至少有一个为 1，则结果为 1，否则为 0。<br>按位异或 ^ ：两个二进制数，两个对应位的值不同，则结果为 1，否则为 0。<br>按位取反 ~：对二进制数的每个位上的值取反。<br>按位与 &amp;：两个二进制数，两个对应位的值都为 1，则结果为 1，否则为 0。<br>左移位 &lt;&lt;：将一个数 n 向左移动 m 位，新的位置由 0 填充，向左移动一个位置，相当于 <code>n * (2 ** 1)</code>，向左移动两个位置，相当于 <code>n * (2 ** 2)</code>。<br>右移位 &gt;&gt;：将一个数 n 向右移动 m 位，新的位置由 0 填充，向右移动一个位置，相当于 <code>n / (2 ** 1)</code>，向右移动两个位置，相当于 <code>n / (2 ** 2)</code>。</p><h3 id="算术运算符"><a href="#算术运算符" class="headerlink" title="算术运算符"></a>算术运算符</h3>]]></content>
     
     
     <categories>
@@ -21,6 +21,8 @@
     <tags>
       
       <tag>位运算</tag>
+      
+      <tag>算术运算</tag>
       
     </tags>
     
@@ -56,11 +58,11 @@
   
   
   <entry>
-    <title>如何设置$$命令行打开各种编辑器</title>
+    <title>Mac环境下设置命令行打开编辑器</title>
     <link href="/2023/09/05/%E5%A6%82%E4%BD%95%E8%AE%BE%E7%BD%AE%E5%91%BD%E4%BB%A4%E8%A1%8C%E6%89%93%E5%BC%80%E5%90%84%E7%A7%8D%E7%BC%96%E8%BE%91%E5%99%A8/"/>
     <url>/2023/09/05/%E5%A6%82%E4%BD%95%E8%AE%BE%E7%BD%AE%E5%91%BD%E4%BB%A4%E8%A1%8C%E6%89%93%E5%BC%80%E5%90%84%E7%A7%8D%E7%BC%96%E8%BE%91%E5%99%A8/</url>
     
-    <content type="html"><![CDATA[]]></content>
+    <content type="html"><![CDATA[<h3 id="Goland"><a href="#Goland" class="headerlink" title="Goland"></a>Goland</h3><p>1、终端打开 <code>~/.zshrc</code></p><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs sh">vim ~/.zshrc<br></code></pre></td></tr></table></figure><p>2、将 Goland 的安装路径添加到 PATH</p><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs sh"><span class="hljs-built_in">export</span> PATH=<span class="hljs-variable">$PATH</span>:/Applications/GoLand.app/Contents/MacOS<br></code></pre></td></tr></table></figure><h3 id="Pycharm"><a href="#Pycharm" class="headerlink" title="Pycharm"></a>Pycharm</h3><p>1、终端打开 <code>~/.zshrc</code></p><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs sh">vim ~/.zshrc<br></code></pre></td></tr></table></figure><p>2、将 Pycharm 的安装路径添加到 PATH</p><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs sh"><span class="hljs-built_in">export</span> PATH=<span class="hljs-variable">$PATH</span>:/Applications/Pycharm.app/Contents/MacOS<br></code></pre></td></tr></table></figure>]]></content>
     
     
     <categories>
