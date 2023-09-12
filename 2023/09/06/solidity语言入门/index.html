@@ -24,7 +24,7 @@
 <meta property="og:description" content="注意事项声明顺序1、using SafeCast2、结构体声明3、其他合约使用声明 IERC20 public immutable XX;4、变量声明5、常量声明6、mapping 声明7、modifier 声明（函数修饰符）8、constructor 函数修饰符使用 modifier 来声明函数修饰符更友好 1234modifier onlyOwner() &amp;#123;    if (msg.s">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2023-09-06T07:09:09.000Z">
-<meta property="article:modified_time" content="2023-09-06T07:35:36.381Z">
+<meta property="article:modified_time" content="2023-09-08T07:24:44.351Z">
 <meta property="article:author" content="John Doe">
 <meta property="article:tag" content="区块链">
 <meta property="article:tag" content="solidity">
@@ -221,7 +221,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          244 字
+          306 字
         
       </span>
     
@@ -290,6 +290,9 @@
                 <h3 id="注意事项"><a href="#注意事项" class="headerlink" title="注意事项"></a>注意事项</h3><h4 id="声明顺序"><a href="#声明顺序" class="headerlink" title="声明顺序"></a>声明顺序</h4><p>1、using SafeCast<br>2、结构体声明<br>3、其他合约使用声明 <code>IERC20 public immutable XX;</code><br>4、变量声明<br>5、常量声明<br>6、mapping 声明<br>7、modifier 声明（函数修饰符）<br>8、constructor</p>
 <h4 id="函数修饰符"><a href="#函数修饰符" class="headerlink" title="函数修饰符"></a>函数修饰符</h4><p>使用 modifier 来声明函数修饰符更友好</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs solidity">modifier onlyOwner() &#123;<br>    if (msg.sender != address(OWNER)) revert InvalidCaller(msg.sender);<br>    _;<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<h4 id="int-类型取值范围"><a href="#int-类型取值范围" class="headerlink" title="int 类型取值范围"></a>int 类型取值范围</h4><p>int256 与 uint256</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs solidity">int256: -2**255 ~ 2**255-1<br>uint256: 2**256<br></code></pre></td></tr></table></figure>
 
                 
               </div>
