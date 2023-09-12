@@ -16,23 +16,22 @@
   <meta name="author" content="John Doe">
   <meta name="keywords" content="">
   
-    <meta name="description" content="solc-select 命令列出所有可用版本 1solc-select install  安装指定版本 123solc-select install &lt;version&gt;solc-select install latest # 安装最新版本  显示当前安装的版本 1solc-select versions">
+    <meta name="description" content="位运算符 按位或 |： 两个二进制数，两个对应位的值至少有一个为 1，则结果为 1，否则为 0。 按位异或 ^：两个二进制数，两个对应位的值不同，则结果为 1，否则为 0。 按位取反 ~：对二进制数的每个位上的值取反。 按位与 &amp;：两个二进制数，两个对应位的值都为 1，则结果为 1，否则为 0。 左移位 &lt;&lt;：将一个数 n 向左移动 m 位，新的位置由 0 填充，向左移动一个位">
 <meta property="og:type" content="article">
-<meta property="og:title" content="solc以及solc-select的安装与使用">
-<meta property="og:url" content="http://example.com/2023/09/05/solc%E4%BB%A5%E5%8F%8Asolc-select%E7%9A%84%E5%AE%89%E8%A3%85%E4%B8%8E%E4%BD%BF%E7%94%A8/index.html">
+<meta property="og:title" content="编程基础">
+<meta property="og:url" content="http://example.com/2023/09/07/%E7%BC%96%E7%A8%8B%E5%9F%BA%E7%A1%80/index.html">
 <meta property="og:site_name" content="Hexo">
-<meta property="og:description" content="solc-select 命令列出所有可用版本 1solc-select install  安装指定版本 123solc-select install &lt;version&gt;solc-select install latest # 安装最新版本  显示当前安装的版本 1solc-select versions">
+<meta property="og:description" content="位运算符 按位或 |： 两个二进制数，两个对应位的值至少有一个为 1，则结果为 1，否则为 0。 按位异或 ^：两个二进制数，两个对应位的值不同，则结果为 1，否则为 0。 按位取反 ~：对二进制数的每个位上的值取反。 按位与 &amp;：两个二进制数，两个对应位的值都为 1，则结果为 1，否则为 0。 左移位 &lt;&lt;：将一个数 n 向左移动 m 位，新的位置由 0 填充，向左移动一个位">
 <meta property="og:locale" content="zh_CN">
-<meta property="article:published_time" content="2023-09-05T06:08:58.000Z">
-<meta property="article:modified_time" content="2023-09-05T08:11:46.638Z">
+<meta property="article:published_time" content="2023-09-07T04:02:19.000Z">
+<meta property="article:modified_time" content="2023-09-07T11:34:53.746Z">
 <meta property="article:author" content="John Doe">
-<meta property="article:tag" content="区块链">
-<meta property="article:tag" content="solidity">
+<meta property="article:tag" content="编程基础">
 <meta name="twitter:card" content="summary_large_image">
   
   
   
-  <title>solc以及solc-select的安装与使用 - Hexo</title>
+  <title>编程基础 - Hexo</title>
 
   <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
 
@@ -198,7 +197,7 @@
       <div class="banner-text text-center fade-in-up">
         <div class="h2">
           
-            <span id="subtitle" data-typed-text="solc以及solc-select的安装与使用"></span>
+            <span id="subtitle" data-typed-text="编程基础"></span>
           
         </div>
 
@@ -209,8 +208,8 @@
     
       <span class="post-meta">
         <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-        <time datetime="2023-09-05 14:08" pubdate>
-          2023年9月5日 下午
+        <time datetime="2023-09-07 12:02" pubdate>
+          2023年9月7日 中午
         </time>
       </span>
     
@@ -221,7 +220,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          142 字
+          372 字
         
       </span>
     
@@ -232,7 +231,7 @@
         
         
         
-          2 分钟
+          4 分钟
         
       </span>
     
@@ -282,19 +281,29 @@
       <div class="container nopadding-x-md" id="board-ctn">
         <div id="board">
           <article class="post-content mx-auto">
-            <h1 id="seo-header">solc以及solc-select的安装与使用</h1>
+            <h1 id="seo-header">编程基础</h1>
             
             
               <div class="markdown-body">
                 
-                <h3 id="solc-select-命令"><a href="#solc-select-命令" class="headerlink" title="solc-select 命令"></a>solc-select 命令</h3><p>列出所有可用版本</p>
-<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs sh">solc-select install<br></code></pre></td></tr></table></figure>
-
-<p>安装指定版本</p>
-<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs sh">solc-select install &lt;version&gt;<br><br>solc-select install latest <span class="hljs-comment"># 安装最新版本</span><br></code></pre></td></tr></table></figure>
-
-<p>显示当前安装的版本</p>
-<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs sh">solc-select versions<br></code></pre></td></tr></table></figure>
+                <h3 id="位运算符"><a href="#位运算符" class="headerlink" title="位运算符"></a>位运算符</h3><ul>
+<li>按位或 |： 两个二进制数，两个对应位的值至少有一个为 1，则结果为 1，否则为 0。</li>
+<li>按位异或 ^：两个二进制数，两个对应位的值不同，则结果为 1，否则为 0。</li>
+<li>按位取反 ~：对二进制数的每个位上的值取反。</li>
+<li>按位与 &amp;：两个二进制数，两个对应位的值都为 1，则结果为 1，否则为 0。</li>
+<li>左移位 &lt;&lt;：将一个数 n 向左移动 m 位，新的位置由 0 填充，向左移动一个位置，相当于 <code>n * (2 ** 1)</code>，向左移动两个位置，相当于 <code>n * (2 ** 2)</code>。</li>
+<li>右移位 &gt;&gt;：将一个数 n 向右移动 m 位，新的位置由 0 填充，向右移动一个位置，相当于 <code>n / (2 ** 1)</code>，向右移动两个位置，相当于 <code>n / (2 ** 2)</code>。</li>
+</ul>
+<h3 id="算术运算符"><a href="#算术运算符" class="headerlink" title="算术运算符"></a>算术运算符</h3><ul>
+<li>加法: <code>x + y</code></li>
+<li>减法: <code>x - y</code></li>
+<li>乘法: <code>x * y</code></li>
+<li>除法: <code>x / y</code></li>
+<li>取模: <code>x % y</code> 两个数相除后的余数，(例如, <code>13 % 5</code> 余 <code>3</code>, 因为 13 除以 5，余 3)</li>
+</ul>
+<div class="note note-warning">
+            <p>取模运算的结果的符号与被除数的符号相同。</p>
+          </div>
 
                 
               </div>
@@ -313,7 +322,7 @@
     
       <span class="category-chain">
         
-  <a href="/categories/Solidity%E8%AF%AD%E8%A8%80/" class="category-chain-item">Solidity语言</a>
+  <a href="/categories/%E7%BC%96%E7%A8%8B%E5%9F%BA%E7%A1%80/" class="category-chain-item">编程基础</a>
   
   
 
@@ -328,9 +337,7 @@
     <div class="post-meta">
       <i class="iconfont icon-tags"></i>
       
-        <a href="/tags/%E5%8C%BA%E5%9D%97%E9%93%BE/" class="print-no-link">#区块链</a>
-      
-        <a href="/tags/solidity/" class="print-no-link">#solidity</a>
+        <a href="/tags/%E7%BC%96%E7%A8%8B%E5%9F%BA%E7%A1%80/" class="print-no-link">#编程基础</a>
       
     </div>
   
@@ -344,18 +351,12 @@
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/2023/09/05/%E5%A6%82%E4%BD%95%E8%AE%BE%E7%BD%AE%E5%91%BD%E4%BB%A4%E8%A1%8C%E6%89%93%E5%BC%80%E5%90%84%E7%A7%8D%E7%BC%96%E8%BE%91%E5%99%A8/" title="Mac环境下设置命令行打开编辑器">
-                        <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">Mac环境下设置命令行打开编辑器</span>
-                        <span class="visible-mobile">上一篇</span>
-                      </a>
-                    
                   </article>
                   <article class="post-next col-6">
                     
                     
-                      <a href="/2023/09/05/python%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/" title="python学习笔记">
-                        <span class="hidden-mobile">python学习笔记</span>
+                      <a href="/2023/09/06/solidity%E8%AF%AD%E8%A8%80%E5%85%A5%E9%97%A8/" title="solidity语言入门">
+                        <span class="hidden-mobile">solidity语言入门</span>
                         <span class="visible-mobile">下一篇</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>

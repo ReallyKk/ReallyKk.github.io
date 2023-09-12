@@ -16,23 +16,23 @@
   <meta name="author" content="John Doe">
   <meta name="keywords" content="">
   
-    <meta name="description" content="solc-select 命令列出所有可用版本 1solc-select install  安装指定版本 123solc-select install &lt;version&gt;solc-select install latest # 安装最新版本  显示当前安装的版本 1solc-select versions">
+    <meta name="description" content="查看 brew 的帮助  1brew –help   安装软件  1brew install git   卸载软件  1brew uninstall git   搜索软件  1brew search git   显示已经安装软件列表  1brew list   更新软件，把所有的 Formula 目录更新，并且会对本机已经安装并有更新的软件用*标明  1brew update   更新某具体软件">
 <meta property="og:type" content="article">
-<meta property="og:title" content="solc以及solc-select的安装与使用">
-<meta property="og:url" content="http://example.com/2023/09/05/solc%E4%BB%A5%E5%8F%8Asolc-select%E7%9A%84%E5%AE%89%E8%A3%85%E4%B8%8E%E4%BD%BF%E7%94%A8/index.html">
+<meta property="og:title" content="brew使用命令">
+<meta property="og:url" content="http://example.com/2023/07/10/brew%E4%BD%BF%E7%94%A8%E5%91%BD%E4%BB%A4/index.html">
 <meta property="og:site_name" content="Hexo">
-<meta property="og:description" content="solc-select 命令列出所有可用版本 1solc-select install  安装指定版本 123solc-select install &lt;version&gt;solc-select install latest # 安装最新版本  显示当前安装的版本 1solc-select versions">
+<meta property="og:description" content="查看 brew 的帮助  1brew –help   安装软件  1brew install git   卸载软件  1brew uninstall git   搜索软件  1brew search git   显示已经安装软件列表  1brew list   更新软件，把所有的 Formula 目录更新，并且会对本机已经安装并有更新的软件用*标明  1brew update   更新某具体软件">
 <meta property="og:locale" content="zh_CN">
-<meta property="article:published_time" content="2023-09-05T06:08:58.000Z">
-<meta property="article:modified_time" content="2023-09-05T08:11:46.638Z">
+<meta property="article:published_time" content="2023-07-10T04:17:27.000Z">
+<meta property="article:modified_time" content="2023-09-04T12:00:56.047Z">
 <meta property="article:author" content="John Doe">
-<meta property="article:tag" content="区块链">
-<meta property="article:tag" content="solidity">
+<meta property="article:tag" content="Linux">
+<meta property="article:tag" content="tmux">
 <meta name="twitter:card" content="summary_large_image">
   
   
   
-  <title>solc以及solc-select的安装与使用 - Hexo</title>
+  <title>brew使用命令 - Hexo</title>
 
   <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
 
@@ -198,7 +198,7 @@
       <div class="banner-text text-center fade-in-up">
         <div class="h2">
           
-            <span id="subtitle" data-typed-text="solc以及solc-select的安装与使用"></span>
+            <span id="subtitle" data-typed-text="brew使用命令"></span>
           
         </div>
 
@@ -209,8 +209,8 @@
     
       <span class="post-meta">
         <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-        <time datetime="2023-09-05 14:08" pubdate>
-          2023年9月5日 下午
+        <time datetime="2023-07-10 12:17" pubdate>
+          2023年7月10日 中午
         </time>
       </span>
     
@@ -221,7 +221,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          142 字
+          397 字
         
       </span>
     
@@ -232,7 +232,7 @@
         
         
         
-          2 分钟
+          4 分钟
         
       </span>
     
@@ -282,19 +282,80 @@
       <div class="container nopadding-x-md" id="board-ctn">
         <div id="board">
           <article class="post-content mx-auto">
-            <h1 id="seo-header">solc以及solc-select的安装与使用</h1>
+            <h1 id="seo-header">brew使用命令</h1>
             
             
               <div class="markdown-body">
                 
-                <h3 id="solc-select-命令"><a href="#solc-select-命令" class="headerlink" title="solc-select 命令"></a>solc-select 命令</h3><p>列出所有可用版本</p>
-<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs sh">solc-select install<br></code></pre></td></tr></table></figure>
+                <ul>
+<li>查看 brew 的帮助</li>
+</ul>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs sh">brew –<span class="hljs-built_in">help</span><br></code></pre></td></tr></table></figure>
 
-<p>安装指定版本</p>
-<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs sh">solc-select install &lt;version&gt;<br><br>solc-select install latest <span class="hljs-comment"># 安装最新版本</span><br></code></pre></td></tr></table></figure>
+<ul>
+<li>安装软件</li>
+</ul>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs sh">brew install git<br></code></pre></td></tr></table></figure>
 
-<p>显示当前安装的版本</p>
-<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs sh">solc-select versions<br></code></pre></td></tr></table></figure>
+<ul>
+<li>卸载软件</li>
+</ul>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs sh">brew uninstall git<br></code></pre></td></tr></table></figure>
+
+<ul>
+<li>搜索软件</li>
+</ul>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs sh">brew search git<br></code></pre></td></tr></table></figure>
+
+<ul>
+<li>显示已经安装软件列表</li>
+</ul>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs sh">brew list<br></code></pre></td></tr></table></figure>
+
+<ul>
+<li>更新软件，把所有的 Formula 目录更新，并且会对本机已经安装并有更新的软件用*标明</li>
+</ul>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs sh">brew update<br></code></pre></td></tr></table></figure>
+
+<ul>
+<li>更新某具体软件</li>
+</ul>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs sh">brew upgrade git<br></code></pre></td></tr></table></figure>
+
+<ul>
+<li>显示软件内容信息</li>
+</ul>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs sh">brew info git<br></code></pre></td></tr></table></figure>
+
+<ul>
+<li>用浏览器打开</li>
+</ul>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs sh">brew home<br></code></pre></td></tr></table></figure>
+
+<ul>
+<li>显示包依赖</li>
+</ul>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs sh">brew deps<br></code></pre></td></tr></table></figure>
+
+<ul>
+<li>显示包的依赖树</li>
+</ul>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs sh">brew deps --installed --tree<br></code></pre></td></tr></table></figure>
+
+<ul>
+<li>启动 web 服务器，可以通过浏览器访问 <a target="_blank" rel="noopener" href="http://localhost:4567/">http://localhost:4567/</a> 来同网页来管理包</li>
+</ul>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs sh">brew server<br></code></pre></td></tr></table></figure>
+
+<ul>
+<li>删除程序，和 upgrade 一样，单个软件删除和所有程序老版删除</li>
+</ul>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs sh">brew cleanup git<br>brew cleanup<br></code></pre></td></tr></table></figure>
+
+<ul>
+<li>查看那些已安装的程序需要更新</li>
+</ul>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs sh">brew outdated<br></code></pre></td></tr></table></figure>
 
                 
               </div>
@@ -313,7 +374,7 @@
     
       <span class="category-chain">
         
-  <a href="/categories/Solidity%E8%AF%AD%E8%A8%80/" class="category-chain-item">Solidity语言</a>
+  <a href="/categories/%E5%91%BD%E4%BB%A4%E8%AF%AD%E5%8F%A5/" class="category-chain-item">命令语句</a>
   
   
 
@@ -328,9 +389,9 @@
     <div class="post-meta">
       <i class="iconfont icon-tags"></i>
       
-        <a href="/tags/%E5%8C%BA%E5%9D%97%E9%93%BE/" class="print-no-link">#区块链</a>
+        <a href="/tags/Linux/" class="print-no-link">#Linux</a>
       
-        <a href="/tags/solidity/" class="print-no-link">#solidity</a>
+        <a href="/tags/tmux/" class="print-no-link">#tmux</a>
       
     </div>
   
@@ -344,9 +405,9 @@
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/2023/09/05/%E5%A6%82%E4%BD%95%E8%AE%BE%E7%BD%AE%E5%91%BD%E4%BB%A4%E8%A1%8C%E6%89%93%E5%BC%80%E5%90%84%E7%A7%8D%E7%BC%96%E8%BE%91%E5%99%A8/" title="Mac环境下设置命令行打开编辑器">
+                      <a href="/2023/07/10/iterm2%E5%91%BD%E4%BB%A4/" title="iterm2命令">
                         <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">Mac环境下设置命令行打开编辑器</span>
+                        <span class="hidden-mobile">iterm2命令</span>
                         <span class="visible-mobile">上一篇</span>
                       </a>
                     
@@ -354,8 +415,8 @@
                   <article class="post-next col-6">
                     
                     
-                      <a href="/2023/09/05/python%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/" title="python学习笔记">
-                        <span class="hidden-mobile">python学习笔记</span>
+                      <a href="/2023/07/04/mysql%E3%80%81gorm%E7%AC%94%E8%AE%B0/" title="mysql、gorm笔记">
+                        <span class="hidden-mobile">mysql、gorm笔记</span>
                         <span class="visible-mobile">下一篇</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>

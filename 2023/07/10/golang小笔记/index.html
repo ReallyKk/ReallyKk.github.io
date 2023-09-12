@@ -16,23 +16,23 @@
   <meta name="author" content="John Doe">
   <meta name="keywords" content="">
   
-    <meta name="description" content="solc-select 命令列出所有可用版本 1solc-select install  安装指定版本 123solc-select install &lt;version&gt;solc-select install latest # 安装最新版本  显示当前安装的版本 1solc-select versions">
+    <meta name="description" content="字符串打印时，%v 和 %+v 的区别1&#96;%v&#96;和&#96;%+v&#96;都可以用来打印&#96;struct&#96;的值，区别在于&#96;%v&#96;仅打印各个字段的值，&#96;%+v&#96;还会打印各个字段的名称。  空 struct{} 的用途使用空结构体 struct{}可以节省内存，一般作为占位符使用，表明这里并不需要一个值。 比如使用 map 表示集合时，只关注 key 的话，value 可以使用 struct{} 作为占位符。如果使用">
 <meta property="og:type" content="article">
-<meta property="og:title" content="solc以及solc-select的安装与使用">
-<meta property="og:url" content="http://example.com/2023/09/05/solc%E4%BB%A5%E5%8F%8Asolc-select%E7%9A%84%E5%AE%89%E8%A3%85%E4%B8%8E%E4%BD%BF%E7%94%A8/index.html">
+<meta property="og:title" content="golang小笔记">
+<meta property="og:url" content="http://example.com/2023/07/10/golang%E5%B0%8F%E7%AC%94%E8%AE%B0/index.html">
 <meta property="og:site_name" content="Hexo">
-<meta property="og:description" content="solc-select 命令列出所有可用版本 1solc-select install  安装指定版本 123solc-select install &lt;version&gt;solc-select install latest # 安装最新版本  显示当前安装的版本 1solc-select versions">
+<meta property="og:description" content="字符串打印时，%v 和 %+v 的区别1&#96;%v&#96;和&#96;%+v&#96;都可以用来打印&#96;struct&#96;的值，区别在于&#96;%v&#96;仅打印各个字段的值，&#96;%+v&#96;还会打印各个字段的名称。  空 struct{} 的用途使用空结构体 struct{}可以节省内存，一般作为占位符使用，表明这里并不需要一个值。 比如使用 map 表示集合时，只关注 key 的话，value 可以使用 struct{} 作为占位符。如果使用">
 <meta property="og:locale" content="zh_CN">
-<meta property="article:published_time" content="2023-09-05T06:08:58.000Z">
-<meta property="article:modified_time" content="2023-09-05T08:11:46.638Z">
+<meta property="article:published_time" content="2023-07-10T07:12:18.000Z">
+<meta property="article:modified_time" content="2023-09-04T12:01:16.124Z">
 <meta property="article:author" content="John Doe">
-<meta property="article:tag" content="区块链">
-<meta property="article:tag" content="solidity">
+<meta property="article:tag" content="后端">
+<meta property="article:tag" content="Go">
 <meta name="twitter:card" content="summary_large_image">
   
   
   
-  <title>solc以及solc-select的安装与使用 - Hexo</title>
+  <title>golang小笔记 - Hexo</title>
 
   <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
 
@@ -198,7 +198,7 @@
       <div class="banner-text text-center fade-in-up">
         <div class="h2">
           
-            <span id="subtitle" data-typed-text="solc以及solc-select的安装与使用"></span>
+            <span id="subtitle" data-typed-text="golang小笔记"></span>
           
         </div>
 
@@ -209,8 +209,8 @@
     
       <span class="post-meta">
         <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-        <time datetime="2023-09-05 14:08" pubdate>
-          2023年9月5日 下午
+        <time datetime="2023-07-10 15:12" pubdate>
+          2023年7月10日 下午
         </time>
       </span>
     
@@ -221,7 +221,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          142 字
+          685 字
         
       </span>
     
@@ -232,7 +232,7 @@
         
         
         
-          2 分钟
+          6 分钟
         
       </span>
     
@@ -282,19 +282,43 @@
       <div class="container nopadding-x-md" id="board-ctn">
         <div id="board">
           <article class="post-content mx-auto">
-            <h1 id="seo-header">solc以及solc-select的安装与使用</h1>
+            <h1 id="seo-header">golang小笔记</h1>
             
             
               <div class="markdown-body">
                 
-                <h3 id="solc-select-命令"><a href="#solc-select-命令" class="headerlink" title="solc-select 命令"></a>solc-select 命令</h3><p>列出所有可用版本</p>
-<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs sh">solc-select install<br></code></pre></td></tr></table></figure>
+                <h3 id="字符串打印时，-v-和-v-的区别"><a href="#字符串打印时，-v-和-v-的区别" class="headerlink" title="字符串打印时，%v 和 %+v 的区别"></a>字符串打印时，%v 和 %+v 的区别</h3><figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs text">`%v`和`%+v`都可以用来打印`struct`的值，区别在于`%v`仅打印各个字段的值，`%+v`还会打印各个字段的名称。<br></code></pre></td></tr></table></figure>
 
-<p>安装指定版本</p>
-<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs sh">solc-select install &lt;version&gt;<br><br>solc-select install latest <span class="hljs-comment"># 安装最新版本</span><br></code></pre></td></tr></table></figure>
+<h3 id="空-struct-的用途"><a href="#空-struct-的用途" class="headerlink" title="空 struct{} 的用途"></a>空 struct{} 的用途</h3><p>使用空结构体 struct{}可以节省内存，一般作为占位符使用，表明这里并不需要一个值。</p>
+<p>比如使用 map 表示集合时，只关注 key 的话，value 可以使用 struct{} 作为占位符。如果使用其他类型作为占位符，例如 int，bool，不仅浪费了内存，而且容易引起歧义。</p>
+<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs go"><span class="hljs-keyword">type</span> Set <span class="hljs-keyword">map</span>[<span class="hljs-type">string</span>]<span class="hljs-keyword">struct</span>&#123;&#125;<br></code></pre></td></tr></table></figure>
 
-<p>显示当前安装的版本</p>
-<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs sh">solc-select versions<br></code></pre></td></tr></table></figure>
+<p>使用信道(channel)控制并发时，我们只是需要一个信号，但并不需要传递值，这个时候，也可以使用 struct{} 代替。</p>
+<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><code class="hljs go"><span class="hljs-function"><span class="hljs-keyword">func</span> <span class="hljs-title">main</span><span class="hljs-params">()</span></span> &#123;<br>	ch := <span class="hljs-built_in">make</span>(<span class="hljs-keyword">chan</span> <span class="hljs-keyword">struct</span>&#123;&#125;, <span class="hljs-number">1</span>)<br>	<span class="hljs-keyword">go</span> <span class="hljs-function"><span class="hljs-keyword">func</span><span class="hljs-params">()</span></span> &#123;<br>		&lt;-ch<br>		<span class="hljs-comment">// do something</span><br>	&#125;()<br>	ch &lt;- <span class="hljs-keyword">struct</span>&#123;&#125;&#123;&#125;<br>	<span class="hljs-comment">// ...</span><br>&#125;<br></code></pre></td></tr></table></figure>
+
+<p>再比如，声明只包含方法的结构体。</p>
+<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><code class="hljs go"><span class="hljs-keyword">type</span> Lamp <span class="hljs-keyword">struct</span>&#123;&#125;<br><br><span class="hljs-function"><span class="hljs-keyword">func</span> <span class="hljs-params">(l Lamp)</span></span> On() &#123;<br>        <span class="hljs-built_in">println</span>(<span class="hljs-string">&quot;On&quot;</span>)<br><br>&#125;<br><span class="hljs-function"><span class="hljs-keyword">func</span> <span class="hljs-params">(l Lamp)</span></span> Off() &#123;<br>        <span class="hljs-built_in">println</span>(<span class="hljs-string">&quot;Off&quot;</span>)<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<h3 id="与"><a href="#与" class="headerlink" title="/ 与 %"></a><code>/</code> 与 <code>%</code></h3><p>A&#x3D;10 B&#x3D;20</p>
+<table>
+<thead>
+<tr>
+<th align="center">运算符</th>
+<th align="center">描述</th>
+<th align="center">实例</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">&#x2F;</td>
+<td align="center">相处</td>
+<td align="center">B &#x2F; A &#x3D; 2</td>
+</tr>
+<tr>
+<td align="center">%</td>
+<td align="center">求余</td>
+<td align="center">B % A &#x3D; 0</td>
+</tr>
+</tbody></table>
 
                 
               </div>
@@ -313,7 +337,7 @@
     
       <span class="category-chain">
         
-  <a href="/categories/Solidity%E8%AF%AD%E8%A8%80/" class="category-chain-item">Solidity语言</a>
+  <a href="/categories/Golang/" class="category-chain-item">Golang</a>
   
   
 
@@ -328,9 +352,9 @@
     <div class="post-meta">
       <i class="iconfont icon-tags"></i>
       
-        <a href="/tags/%E5%8C%BA%E5%9D%97%E9%93%BE/" class="print-no-link">#区块链</a>
+        <a href="/tags/%E5%90%8E%E7%AB%AF/" class="print-no-link">#后端</a>
       
-        <a href="/tags/solidity/" class="print-no-link">#solidity</a>
+        <a href="/tags/Go/" class="print-no-link">#Go</a>
       
     </div>
   
@@ -344,9 +368,9 @@
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/2023/09/05/%E5%A6%82%E4%BD%95%E8%AE%BE%E7%BD%AE%E5%91%BD%E4%BB%A4%E8%A1%8C%E6%89%93%E5%BC%80%E5%90%84%E7%A7%8D%E7%BC%96%E8%BE%91%E5%99%A8/" title="Mac环境下设置命令行打开编辑器">
+                      <a href="/2023/07/10/%E5%AD%97%E7%AC%A6%E4%B8%B2%E5%A4%84%E7%90%86/" title="字符串处理">
                         <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">Mac环境下设置命令行打开编辑器</span>
+                        <span class="hidden-mobile">字符串处理</span>
                         <span class="visible-mobile">上一篇</span>
                       </a>
                     
@@ -354,8 +378,8 @@
                   <article class="post-next col-6">
                     
                     
-                      <a href="/2023/09/05/python%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/" title="python学习笔记">
-                        <span class="hidden-mobile">python学习笔记</span>
+                      <a href="/2023/07/10/Go%E5%AD%A6%E4%B9%A0%E8%B5%84%E6%96%99/" title="Go学习资料">
+                        <span class="hidden-mobile">Go学习资料</span>
                         <span class="visible-mobile">下一篇</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>
