@@ -24,7 +24,7 @@
 <meta property="og:description" content="注意事项声明顺序1、using SafeCast2、结构体声明3、其他合约使用声明 IERC20 public immutable XX;4、变量声明5、常量声明6、mapping 声明7、modifier 声明（函数修饰符）8、constructor 函数修饰符使用 modifier 来声明函数修饰符更友好 1234modifier onlyOwner() &amp;#123;    if (msg.s">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2023-09-06T07:09:09.000Z">
-<meta property="article:modified_time" content="2023-09-08T07:24:44.351Z">
+<meta property="article:modified_time" content="2023-09-13T10:00:49.324Z">
 <meta property="article:author" content="John Doe">
 <meta property="article:tag" content="区块链">
 <meta property="article:tag" content="solidity">
@@ -221,7 +221,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          306 字
+          625 字
         
       </span>
     
@@ -232,7 +232,7 @@
         
         
         
-          3 分钟
+          6 分钟
         
       </span>
     
@@ -293,6 +293,15 @@
 
 <h4 id="int-类型取值范围"><a href="#int-类型取值范围" class="headerlink" title="int 类型取值范围"></a>int 类型取值范围</h4><p>int256 与 uint256</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs solidity">int256: -2**255 ~ 2**255-1<br>uint256: 2**256<br></code></pre></td></tr></table></figure>
+
+<h3 id="自增运算符"><a href="#自增运算符" class="headerlink" title="自增运算符"></a>自增运算符</h3><p><strong>i++</strong>: 前置自增运算符。它先将变量的值加 1，然后返回增加后的值。也可以说是先进行加法操作，再返回结果</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs solidity">uint256 i = 5;<br>uint256 result = ++i;  // result = 6, i = 6<br></code></pre></td></tr></table></figure>
+
+<p>在上述示例中，<code>++i</code> 先将 <code>i</code> 的值加 1，然后将增加后的值 6 赋给 <code>result</code>。</p>
+<figure class="highlight asciidoc"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs asciidoc"><br><span class="hljs-strong">**++i**</span>: 后置自增运算符。它先返回变量的当前值，然后再将变量的值加 1。也可以说是先返回结果，再进行加法操作。<br></code></pre></td></tr></table></figure>
+
+<p>uint256 i &#x3D; 5;<br>uint256 result &#x3D; i++; &#x2F;&#x2F; result &#x3D; 5, i &#x3D; 6</p>
+<figure class="highlight autohotkey"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs autohotkey"><br>在上述示例中，`i++` 先将 `i` 的当前值<span class="hljs-number">5</span>赋给 `result`，然后再将 `i` 的值加<span class="hljs-number">1</span>，变为<span class="hljs-number">6</span>。<br></code></pre></td></tr></table></figure>
 
                 
               </div>
