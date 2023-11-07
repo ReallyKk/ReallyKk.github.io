@@ -24,7 +24,7 @@
 <meta property="og:description" content="vim基本上 vi&#x2F;vim 共分为三种模式，命令模式（Command Mode）、输入模式（Insert Mode）和命令行模式（Command-Line Mode）。 命令模式用户刚刚启动 vi&#x2F;vim，便进入了命令模式。 此状态下敲击键盘动作会被 Vim 识别为命令，而非输入字符，比如我们此时按下 i，并不会输入一个字符，i 被当作了一个命令。 以下是普通模式常用的几个命令">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2023-11-07T03:28:34.000Z">
-<meta property="article:modified_time" content="2023-11-07T03:39:08.534Z">
+<meta property="article:modified_time" content="2023-11-07T03:46:10.495Z">
 <meta property="article:author" content="John Doe">
 <meta property="article:tag" content="Linux">
 <meta property="article:tag" content="vim">
@@ -221,7 +221,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          4.2k 字
+          4.3k 字
         
       </span>
     
@@ -356,7 +356,7 @@
 <td align="left">光标向右移动一个字符</td>
 </tr>
 <tr>
-<td align="left">如果你将右手放在键盘上的话，你会发现 hjkl 是排列在一起的，因此可以使用这四个按钮来移动光标。 如果想要进行多次移动的话，例如向下移动 30 行，可以使用 “30j” 或 “30↓” 的组合按键， 亦即加上想要进行的次数(数字)后，按下动作即可！</td>
+<td align="left"><strong>如果你将右手放在键盘上的话，你会发现 hjkl 是排列在一起的，因此可以使用这四个按钮来移动光标。 如果想要进行多次移动的话，例如向下移动 30 行，可以使用 “30j” 或 “30↓” 的组合按键， 亦即加上想要进行的次数(数字)后，按下动作即可！</strong></td>
 <td align="left"></td>
 </tr>
 <tr>
@@ -424,7 +424,7 @@
 <td align="left">n 为数字。光标向下移动 n 行(常用)</td>
 </tr>
 <tr>
-<td align="left">搜索替换</td>
+<td align="left"><strong>搜索替换</strong></td>
 <td align="left"></td>
 </tr>
 <tr>
@@ -444,7 +444,7 @@
 <td align="left">这个 N 是英文按键。与 n 刚好相反，为『反向』进行前一个搜寻动作。 例如 &#x2F;vbird 后，按下 N 则表示『向上』搜寻 vbird 。</td>
 </tr>
 <tr>
-<td align="left">使用 &#x2F;word 配合 n 及 N 是非常有帮助的！可以让你重复的找到一些你搜寻的关键词！</td>
+<td align="left"><strong>使用 &#x2F;word 配合 n 及 N 是非常有帮助的！可以让你重复的找到一些你搜寻的关键词！</strong></td>
 <td align="left"></td>
 </tr>
 <tr>
@@ -460,7 +460,7 @@
 <td align="left">从第一行到最后一行寻找 word1 字符串，并将该字符串取代为 word2 ！且在取代前显示提示字符给用户确认 (confirm) 是否需要取代！(常用)</td>
 </tr>
 <tr>
-<td align="left">删除、复制与贴上</td>
+<td align="left"><strong>删除、复制与贴上</strong></td>
 <td align="left"></td>
 </tr>
 <tr>
@@ -540,7 +540,7 @@
 <td align="left">重做上一个动作。(常用)</td>
 </tr>
 <tr>
-<td align="left">这个 u 与 [Ctrl]+r 是很常用的指令！一个是复原，另一个则是重做一次～ 利用这两个功能按键，你的编辑，嘿嘿！很快乐的啦！</td>
+<td align="left"><strong>这个 u 与 [Ctrl]+r 是很常用的指令！一个是复原，另一个则是重做一次～ 利用这两个功能按键，你的编辑，嘿嘿！很快乐的啦！</strong></td>
 <td align="left"></td>
 </tr>
 <tr>
@@ -572,7 +572,7 @@
 <td align="left">进入取代模式(Replace mode)： r 只会取代光标所在的那一个字符一次；R 会一直取代光标所在的文字，直到按下 ESC 为止；(常用)</td>
 </tr>
 <tr>
-<td align="left">上面这些按键中，在 vi 画面的左下角处会出现『–INSERT–』或『–REPLACE–』的字样。 由名称就知道该动作了吧！！特别注意的是，我们上面也提过了，你想要在档案里面输入字符时， 一定要在左下角处看到 INSERT 或 REPLACE 才能输入喔！</td>
+<td align="left"><strong>上面这些按键中，在 vi 画面的左下角处会出现『–INSERT–』或『–REPLACE–』的字样。 由名称就知道该动作了吧！！特别注意的是，我们上面也提过了，你想要在档案里面输入字符时， 一定要在左下角处看到 INSERT 或 REPLACE 才能输入喔！</strong></td>
 <td align="left"></td>
 </tr>
 <tr>
@@ -604,7 +604,7 @@
 <td align="left">若曾修改过档案，又不想储存，使用 ! 为强制离开不储存档案。</td>
 </tr>
 <tr>
-<td align="left">注意一下啊，那个惊叹号 (!) 在 vi 当中，常常具有『强制』的意思～</td>
+<td align="left"><strong>注意一下啊，那个惊叹号 (!) 在 vi 当中，常常具有『强制』的意思～</strong></td>
 <td align="left"></td>
 </tr>
 <tr>
@@ -636,7 +636,7 @@
 <td align="left">暂时离开 vi 到指令行模式下执行 command 的显示结果！例如『:! ls &#x2F;home』即可在 vi 当中察看 &#x2F;home 底下以 ls 输出的档案信息！</td>
 </tr>
 <tr>
-<td align="left">vim 环境的变更</td>
+<td align="left"><strong>vim 环境的变更</strong></td>
 <td align="left"></td>
 </tr>
 <tr>
@@ -652,6 +652,12 @@
 <td align="left">显示高亮</td>
 </tr>
 </tbody></table>
+<style>
+    table th:nth-of-type(1){
+        width:200px;
+        white-space:nowrap;
+    }
+</style>
 
                 
               </div>
